@@ -4,7 +4,8 @@ import Steps from './components/Steps'
 import Metrics from './components/Metrics'
 import CTA from './components/CTA'
 import ProductShowcase from './components/ProductShowcase'
-import WhatsAppButton from './components/WhatsAppButton'; // Importar el nuevo componente
+import WhatsAppButton from './components/WhatsAppButton';
+import Footer from './components/Footer'; // Importar el nuevo componente Footer
 
 export default function App() {
   return (
@@ -37,8 +38,8 @@ export default function App() {
         <Metrics />
         <CTA />
       </main>
-      <footer className="bg-oa-ink text-oa-gray py-8 text-center text-sm">© {new Date().getFullYear()} Observauto</footer>
-      <WhatsAppButton /> {/* Añadir el botón flotante de WhatsApp aquí */}
+      <Footer /> {/* Usar el nuevo componente Footer aquí */}
+      <WhatsAppButton />
     </div>
   )
 }
