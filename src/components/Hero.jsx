@@ -9,10 +9,12 @@ export default function Hero() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="mx-auto max-w-3xl px-6 text-center text-white pt-20 md:pt-0"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">Comunicación que convierte conocimiento en confianza.</h1>
-        <p className="mt-4 text-lg md:text-xl opacity-90">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">
+          Comunicación que convierte conocimiento en confianza.
+        </h1>
+        <h2 className="text-xl md:text-2xl text-gray-600/90 font-medium leading-relaxed max-w-3xl mx-auto mb-8">
           Una Cápsula Observauto transforma información en influencia de marca.
-        </p>
+        </h2>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#demo-contacto" className="inline-flex items-center justify-center rounded-pill bg-white text-oa-blue px-6 py-3 font-semibold shadow-soft hover:scale-[1.02] transition">
             Ver demo
