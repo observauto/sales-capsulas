@@ -40,7 +40,7 @@ export default function MobileMenu() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-0 bg-white/85 backdrop-blur-md z-50 flex flex-col p-6"
+            className="fixed inset-0 bg-white z-50 flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-8">
               <a href="#hero" className="flex items-center gap-2" onClick={toggleMenu}>
