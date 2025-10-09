@@ -9,7 +9,14 @@ export default {
           red:  '#D70102',
           gray: '#EAEAEA',
           ink:  '#1A1A1A',
-          white:'#FFFFFF'
+          white:'#FFFFFF',
+          // Nuevos colores de la paleta corporativa
+          black: '#000000',
+          'blue-dark': '#213F7A',
+          yellow: '#FDCB00',
+          magenta: '#B22E8D',
+          brown: '#6B3E26',
+          'muted-blue': '#6A7B9C',
         }
       },
       borderRadius: {

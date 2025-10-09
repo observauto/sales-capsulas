@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Steps from './components/Steps'
 import Metrics from './components/Metrics'
 import CTA from './components/CTA'
+import ProductShowcase from './components/ProductShowcase' // Importar el nuevo componente
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             </ul>
           </div>
         </section>
+        <ProductShowcase /> {/* Añadir la nueva sección aquí */}
         <Steps />
         <Metrics />
         <CTA />

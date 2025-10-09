@@ -2,6 +2,7 @@ import { motion, useInView, useAnimation } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
 const METRICS = [
+  { label: 'Alcance', value: '↑ 30%' }, // Nueva métrica
   { label: 'VTR', value: '≈ 80%' },
   { label: 'Engagement', value: '≈ 18%' },
   { label: 'Tiempo', value: '≈ 2:45 min' },
@@ -25,7 +26,7 @@ export default function Metrics() {
           initial={{ opacity: 0, y: 12 }}
           animate={controls}
           transition={{ duration: 0.6 }}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-6" // Ajustado para 6 columnas
         >
           {METRICS.map(m => (
             <div key={m.label} className="rounded-2xl bg-white/10 p-6 backdrop-blur shadow-soft">
