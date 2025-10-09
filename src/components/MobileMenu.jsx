@@ -40,9 +40,13 @@ export default function MobileMenu() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-0 bg-white z-50 flex flex-col p-6"
+            className="fixed inset-0 z-50 flex flex-col p-6"
           >
-            <div className="flex justify-between items-center mb-8">
+            {/* Fondo blanco opaco */}
+            <div className="absolute inset-0 bg-white"></div>
+
+            {/* Contenido del menú */}
+            <div className="relative z-10 flex justify-between items-center mb-8">
               <a href="#hero" className="flex items-center gap-2" onClick={toggleMenu}>
                 <LogoOA className="h-7 w-auto" />
                 <span className="text-oa-ink font-semibold"> - Awareness -</span>
@@ -53,7 +57,7 @@ export default function MobileMenu() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-4 text-oa-ink text-lg">
+            <nav className="relative z-10 flex flex-col gap-4 text-oa-ink text-lg">
               {links.map((l, i) => (
                 <motion.a
                   key={l.href}
