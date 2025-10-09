@@ -2,7 +2,12 @@ import LogoOA from './LogoOA';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const lastLoadDate = "8 de octubre de 2025, 10:09 p. m."; // Placeholder, you might want to make this dynamic
+  
+  // Generar la fecha y hora de carga en tiempo real
+  const now = new Date();
+  const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+  const optionsTime = { hour: 'numeric', minute: 'numeric', hour12: true };
+  const lastLoadDate = `${now.toLocaleDateString('es-ES', optionsDate)}, ${now.toLocaleTimeString('es-ES', optionsTime)}`;
 
   return (
     <footer className="bg-oa-white py-12 text-oa-ink">
