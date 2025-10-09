@@ -25,3 +25,4 @@ export default function Navbar() {
     </header>
   )
 }
+// codex: smoke test (no cambies nada más)
