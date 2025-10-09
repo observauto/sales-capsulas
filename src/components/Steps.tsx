@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const STEPS = [
   { title: 'Estrategia', text: 'Definimos el ángulo y el objetivo.' },
   { title: 'Diseño', text: 'Identidad visual + storytelling.' },
   { title: 'Publicación', text: 'Web, redes y vocería Observauto.' },
   { title: 'Medición', text: 'KPIs: alcance, clics, tráfico, ER.' },
-]
+];
 
 export default function Steps() {
   return (
@@ -30,5 +30,5 @@ export default function Steps() {
         </div>
       </div>
     </section>
-  )
+  );
 }

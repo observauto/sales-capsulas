@@ -11,5 +11,5 @@ export default function CTA() {
         <div className="mt-6 text-sm opacity-90">Felipe Garan · RRPP & CTO — contacto@observauto.com</div>
       </div>
     </section>
-  )
+  );
 }

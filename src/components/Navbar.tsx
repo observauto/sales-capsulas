@@ -1,4 +1,4 @@
-import LogoOA from './LogoOA'
+import LogoOA from './LogoOA.tsx'; // Actualizado a .tsx
 
 const links = [
   { href: "#que-es", label: "Qué es" },
@@ -6,7 +6,7 @@ const links = [
   { href: "#como-funciona", label: "Cómo funciona" },
   { href: "#resultados", label: "Resultados" },
   { href: "#demo-contacto", label: "Demo" },
-]
+];
 
 export default function Navbar() {
   return (
@@ -23,5 +23,5 @@ export default function Navbar() {
         </ul>
       </nav>
     </header>
-  )
+  );
 }

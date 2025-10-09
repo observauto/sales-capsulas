@@ -1,8 +1,8 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Steps from './components/Steps'
-import Metrics from './components/Metrics'
-import CTA from './components/CTA'
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import Steps from './components/Steps.tsx';
+import Metrics from './components/Metrics.tsx';
+import CTA from './components/CTA.tsx';
 
 export default function App() {
   return (
@@ -36,5 +36,5 @@ export default function App() {
       </main>
       <footer className="bg-oa-ink text-oa-gray py-8 text-center text-sm">© {new Date().getFullYear()} Observauto</footer>
     </div>
-  )
+  );
 }
