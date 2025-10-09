@@ -3,7 +3,8 @@ import Hero from './components/Hero'
 import Steps from './components/Steps'
 import Metrics from './components/Metrics'
 import CTA from './components/CTA'
-import ProductShowcase from './components/ProductShowcase' // Importar el nuevo componente
+import ProductShowcase from './components/ProductShowcase'
+import WhatsAppButton from './components/WhatsAppButton'; // Importar el nuevo componente
 
 export default function App() {
   return (
@@ -31,12 +32,13 @@ export default function App() {
             </ul>
           </div>
         </section>
-        <ProductShowcase /> {/* Añadir la nueva sección aquí */}
+        <ProductShowcase />
         <Steps />
         <Metrics />
         <CTA />
       </main>
       <footer className="bg-oa-ink text-oa-gray py-8 text-center text-sm">© {new Date().getFullYear()} Observauto</footer>
+      <WhatsAppButton /> {/* Añadir el botón flotante de WhatsApp aquí */}
     </div>
   )
 }
