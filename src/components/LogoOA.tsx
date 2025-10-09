@@ -1,8 +1,4 @@
-interface LogoOAProps {
-  className?: string;
-}
-
-export default function LogoOA({ className = "h-8 w-auto" }: LogoOAProps) {
+export default function LogoOA({ className = "h-8 w-auto" }: { className?: string }) {
   return (
     <img
       src="https://stats.observauto.com/pauta/logo_full.png"
@@ -12,5 +8,5 @@ export default function LogoOA({ className = "h-8 w-auto" }: LogoOAProps) {
       width="220"
       height="28"
     />
-  );
+  )
 }
