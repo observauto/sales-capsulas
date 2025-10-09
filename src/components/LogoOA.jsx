@@ -1,4 +1,4 @@
-export default function LogoOA({ className = "h-8 w-auto" }: { className?: string }) {
+export default function LogoOA({ className = "h-8 w-auto" }) {
   return (
     <img
       src="https://stats.observauto.com/pauta/logo_full.png"

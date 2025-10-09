@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import React from 'react'; // Importar React explícitamente para TSX
+import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
@@ -24,5 +23,5 @@ export default function Hero() {
         </div>
       </motion.div>
     </section>
-  );
+  )
 }

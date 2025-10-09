@@ -1,5 +1,5 @@
-import { motion, useInView, useAnimation } from 'framer-motion';
-import React, { useEffect, useRef } from 'react'; // Importar React explícitamente para TSX
+import { motion, useInView, useAnimation } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 const METRICS = [
   { label: 'VTR', value: '≈ 80%' },
@@ -7,14 +7,14 @@ const METRICS = [
   { label: 'Tiempo', value: '≈ 2:45 min' },
   { label: 'Brand recall', value: '↑ 20%' },
   { label: 'PR Value', value: 'USD 6K–9K' },
-];
+]
 
 export default function Metrics() {
-  const ref = useRef<HTMLDivElement>(null); // Especificar tipo para useRef
-  const inView = useInView(ref, { once: true, amount: 0.3 });
-  const controls = useAnimation();
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.3 })
+  const controls = useAnimation()
 
-  useEffect(() => { if (inView) controls.start({ opacity: 1, y: 0 }); }, [inView, controls]); // Añadir 'controls' a las dependencias
+  useEffect(() => { if (inView) controls.start({ opacity: 1, y: 0 }) }, [inView])
 
   return (
     <section id="resultados" className="bg-oa-red text-white py-20">
@@ -37,5 +37,5 @@ export default function Metrics() {
         <p className="mt-6 text-sm opacity-90">* Promedios históricos; los resultados pueden variar.</p>
       </div>
     </section>
-  );
+  )
 }
