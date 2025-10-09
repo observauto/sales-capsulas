@@ -40,9 +40,8 @@ export default function MobileMenu() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-0 z-50 flex flex-col p-6 backdrop-blur-md bg-white/85" // Aplicar el mismo estilo de fondo que el header
+            className="fixed inset-0 z-50 flex flex-col p-6 bg-oa-white" // Fondo blanco sólido y opaco
           >
-            {/* El contenido del menú ya no necesita un div de fondo separado */}
             <div className="flex justify-between items-center mb-8">
               <a href="#hero" className="flex items-center gap-2" onClick={toggleMenu}>
                 <LogoOA className="h-7 w-auto" />
