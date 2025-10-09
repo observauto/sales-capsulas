@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2">
             <a href="#hero" className="flex items-center gap-2">
               <LogoOA className="h-7 w-auto" />
-              <span className="text-oa-ink font-semibold">Cápsulas</span>
+              <span className="text-oa-ink font-semibold">Awareness</span>
               <span className="sr-only">Observauto Cápsulas</span>
             </a>
             <p className="text-sm text-oa-ink/80 mt-2">Observemos más autos juntos</p>
