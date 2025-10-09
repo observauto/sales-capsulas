@@ -1,6 +1,6 @@
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import Counter from './Counter'; // Importar el nuevo componente Counter
+import Counter from './Counter';
 
 const METRICS = [
   { label: 'Alcance', value: 30, unit: '%', type: 'percentage', prefix: '↑ ' },
@@ -31,7 +31,7 @@ export default function Metrics() {
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6" // Ajustado para 6 columnas en pantallas grandes
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
         >
           {METRICS.map((m, i) => (
             <motion.div
@@ -39,18 +39,18 @@ export default function Metrics() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
-              className="rounded-2xl bg-white/10 p-6 backdrop-blur shadow-soft flex flex-col items-center justify-center text-center h-40" // Estilos para un look de widget
+              className="rounded-2xl bg-white p-6 shadow-soft flex flex-col items-center justify-center text-center h-40" // Fondo blanco y sombra suave
             >
-              <div className="text-5xl font-extrabold text-oa-yellow leading-none">
+              <div className="text-5xl font-extrabold text-oa-blue leading-none"> {/* Color azul para los números */}
                 {m.prefix}
                 {m.type === 'time' ? (
-                  <span>{m.value}</span> // Para tiempo, no animamos el float directamente
+                  <span>{m.value}</span>
                 ) : (
                   <Counter value={m.value} />
                 )}
                 {m.unit}
               </div>
-              <div className="mt-2 text-white/90 text-lg font-semibold uppercase tracking-wide">{m.label}</div>
+              <div className="mt-2 text-oa-ink text-lg font-semibold uppercase tracking-wide">{m.label}</div> {/* Texto oscuro para las etiquetas */}
             </motion.div>
           ))}
         </motion.div>
