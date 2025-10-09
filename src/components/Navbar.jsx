@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/85 border-b border-oa-gray/30 shadow-sm">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a href="#hero" className="flex items-center gap-2">
-          <LogoOA className="h-8 md:h-10" />
+          <LogoOA className="h-6 md:h-7" />
           <span className="sr-only">Observauto</span>
         </a>
         <ul className="hidden md:flex items-center gap-6 text-oa-ink">
