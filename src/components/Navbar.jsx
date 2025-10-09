@@ -1,5 +1,5 @@
 import LogoOA from './LogoOA'
-import MobileMenu from './MobileMenu'; // Importar el nuevo componente
+// Eliminado: import MobileMenu from './MobileMenu';
 
 const links = [
   { href: "#que-es", label: "Qué es" },
@@ -23,7 +23,7 @@ export default function Navbar() {
             <li key={l.href}><a href={l.href} className="hover:text-oa-red hover:bg-oa-gray/30 px-3 py-1.5 rounded-pill transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-oa-red">{l.label}</a></li>
           ))}
         </ul>
-        <MobileMenu /> {/* Añadir el menú móvil aquí */}
+        {/* Eliminado: <MobileMenu /> */}
       </nav>
     </header>
   )
