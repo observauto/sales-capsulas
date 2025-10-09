@@ -1,5 +1,5 @@
 import { motion, useInView, useAnimation } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react'; // Importar React explícitamente para TSX
 
 const METRICS = [
   { label: 'VTR', value: '≈ 80%' },
@@ -10,11 +10,11 @@ const METRICS = [
 ];
 
 export default function Metrics() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null); // Especificar tipo para useRef
   const inView = useInView(ref, { once: true, amount: 0.3 });
   const controls = useAnimation();
 
-  useEffect(() => { if (inView) controls.start({ opacity: 1, y: 0 }); }, [inView, controls]);
+  useEffect(() => { if (inView) controls.start({ opacity: 1, y: 0 }); }, [inView, controls]); // Añadir 'controls' a las dependencias
 
   return (
     <section id="resultados" className="bg-oa-red text-white py-20">

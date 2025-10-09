@@ -1,3 +1,5 @@
+import React from 'react'; // Importar React explícitamente para TSX
+
 export default function CTA() {
   return (
     <section id="demo-contacto" className="relative bg-oa-blue py-20">

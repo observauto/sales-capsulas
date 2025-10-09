@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import React from 'react'; // Importar React explícitamente para TSX
 
 const STEPS = [
   { title: 'Estrategia', text: 'Definimos el ángulo y el objetivo.' },

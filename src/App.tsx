@@ -1,8 +1,9 @@
 import Navbar from './components/Navbar.tsx';
-import Hero from './components/Hero.jsx'; // Mantener .jsx por ahora si no se modifican
-import Steps from './components/Steps.jsx'; // Mantener .jsx por ahora si no se modifican
-import Metrics from './components/Metrics.jsx'; // Mantener .jsx por ahora si no se modifican
-import CTA from './components/CTA.jsx'; // Mantener .jsx por ahora si no se modifican
+import Hero from './components/Hero.tsx';
+import Steps from './components/Steps.tsx';
+import Metrics from './components/Metrics.tsx';
+import CTA from './components/CTA.tsx';
+import React from 'react'; // Importar React explícitamente para TSX
 
 export default function App() {
   return (
