@@ -1,4 +1,5 @@
 import LogoOA from './LogoOA';
+import SocialLinks from './SocialLinks'; // Importar el nuevo componente
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,13 +25,13 @@ export default function Footer() {
             <p className="text-sm text-oa-ink/80 mt-2">Observemos más autos juntos</p>
           </div>
 
-          {/* Column 2: Aprende */}
+          {/* Column 2: Contenido */}
           <div>
-            <h3 className="font-bold text-lg mb-3">Aprende</h3>
+            <h3 className="font-bold text-lg mb-3">Contenido</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-oa-red transition-colors">Todas las cápsulas</a></li>
-              <li><a href="#" className="hover:text-oa-red transition-colors">Favoritos</a></li>
-              <li><a href="#" className="hover:text-oa-red transition-colors">Mis progresos</a></li>
+              <li><a href="#" className="hover:text-oa-red transition-colors">Artículos</a></li>
+              <li><a href="#" className="hover:text-oa-red transition-colors">Guías</a></li>
+              <li><a href="#" className="hover:text-oa-red transition-colors">Webinars</a></li>
             </ul>
           </div>
 
@@ -39,7 +40,7 @@ export default function Footer() {
             <h3 className="font-bold text-lg mb-3">Recursos</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="https://observauto.com" target="_blank" rel="noreferrer" className="hover:text-oa-red transition-colors">Sitio principal</a></li>
-              <li><a href="#" className="hover:text-oa-red transition-colors">Blog automotor</a></li>
+              <li><a href="#" className="hover:text-oa-red transition-colors">Casos de Éxito</a></li> {/* Cambiado de Blog automotor */}
               <li><a href="#" className="hover:text-oa-red transition-colors">Guías descargables</a></li>
             </ul>
           </div>
@@ -48,8 +49,8 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-3">Contacto</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="mailto:hola@observauto.com" className="hover:text-oa-red transition-colors">hola@observauto.com</a></li>
-              <li><a href="#" className="hover:text-oa-red transition-colors">Redes sociales</a></li>
+              <li><a href="mailto:info@observauto.com" className="hover:text-oa-red transition-colors">info@observauto.com</a></li> {/* Cambiado a info@ */}
+              <li><SocialLinks className="mt-2" /></li> {/* Integrar SocialLinks */}
               <li><a href="#" className="hover:text-oa-red transition-colors">Soporte</a></li>
             </ul>
           </div>

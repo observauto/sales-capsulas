@@ -1,14 +1,15 @@
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import Counter from './Counter';
+import { TrendingUp, Gauge, BarChart2, Timer, Lightbulb, DollarSign } from 'lucide-react'; // Importar iconos
 
 const METRICS = [
-  { label: 'Alcance', value: 30, unit: '%', type: 'percentage', prefix: '↑ ' },
-  { label: 'VTR', value: 80, unit: '%', type: 'percentage', prefix: '≈ ' },
-  { label: 'Engagement', value: 18, unit: '%', type: 'percentage', prefix: '≈ ' },
-  { label: 'Tiempo', value: 2.45, unit: ' min', type: 'time', prefix: '≈ ' },
-  { label: 'Brand recall', value: 20, unit: '%', type: 'percentage', prefix: '↑ ' },
-  { label: 'PR Value', value: 6, unit: 'K–9K', type: 'currency', prefix: 'USD ' },
+  { label: 'Alcance', value: 30, unit: '%', type: 'percentage', prefix: '↑ ', icon: TrendingUp },
+  { label: 'VTR', value: 80, unit: '%', type: 'percentage', prefix: '≈ ', icon: Gauge },
+  { label: 'Engagement', value: 18, unit: '%', type: 'percentage', prefix: '≈ ', icon: BarChart2 },
+  { label: 'Tiempo', value: 2.45, unit: ' min', type: 'time', prefix: '≈ ', icon: Timer },
+  { label: 'Brand recall', value: 20, unit: '%', type: 'percentage', prefix: '↑ ', icon: Lightbulb },
+  { label: 'PR Value', value: 6, unit: 'K–9K', type: 'currency', prefix: 'USD ', icon: DollarSign },
 ]
 
 export default function Metrics() {
@@ -39,8 +40,9 @@ export default function Metrics() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
-              className="rounded-2xl bg-white p-6 shadow-soft flex flex-col items-center justify-center text-center h-40" // Fondo blanco y sombra suave
+              className="rounded-2xl bg-white p-6 shadow-soft flex flex-col items-center justify-center text-center h-48" // Aumentar altura para iconos
             >
+              {m.icon && <m.icon size={36} className="text-oa-red mb-3" />} {/* Icono */}
               <div className="text-5xl font-extrabold text-oa-blue leading-none"> {/* Color azul para los números */}
                 {m.prefix}
                 {m.type === 'time' ? (
