@@ -40,39 +40,37 @@ export default function MobileMenu() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-0 z-50 flex flex-col p-6"
+            className="fixed inset-0 bg-white z-50" // Fondo blanco opaco en todo el contenedor
           >
-            {/* Fondo blanco opaco */}
-            <div className="absolute inset-0 bg-white"></div>
+            <div className="flex flex-col p-6 h-full"> {/* Contenido con padding dentro */}
+              <div className="flex justify-between items-center mb-8">
+                <a href="#hero" className="flex items-center gap-2" onClick={toggleMenu}>
+                  <LogoOA className="h-7 w-auto" />
+                  <span className="text-oa-ink font-semibold"> - Awareness -</span>
+                  <span className="sr-only">Observauto</span>
+                </a>
+                <button onClick={toggleMenu} className="p-2 text-oa-ink focus:outline-none focus:ring-2 focus:ring-oa-red rounded-md">
+                  <X size={24} />
+                </button>
+              </div>
 
-            {/* Contenido del menú */}
-            <div className="relative z-10 flex justify-between items-center mb-8">
-              <a href="#hero" className="flex items-center gap-2" onClick={toggleMenu}>
-                <LogoOA className="h-7 w-auto" />
-                <span className="text-oa-ink font-semibold"> - Awareness -</span>
-                <span className="sr-only">Observauto</span>
-              </a>
-              <button onClick={toggleMenu} className="p-2 text-oa-ink focus:outline-none focus:ring-2 focus:ring-oa-red rounded-md">
-                <X size={24} />
-              </button>
+              <nav className="flex flex-col gap-4 text-oa-ink text-lg">
+                {links.map((l, i) => (
+                  <motion.a
+                    key={l.href}
+                    href={l.href}
+                    onClick={toggleMenu}
+                    variants={linkVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: i * 0.05 + 0.1 }}
+                    className="block py-2 px-4 rounded-md hover:bg-oa-gray/30 transition-colors"
+                  >
+                    {l.label}
+                  </motion.a>
+                ))}
+              </nav>
             </div>
-
-            <nav className="relative z-10 flex flex-col gap-4 text-oa-ink text-lg">
-              {links.map((l, i) => (
-                <motion.a
-                  key={l.href}
-                  href={l.href}
-                  onClick={toggleMenu}
-                  variants={linkVariants}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: i * 0.05 + 0.1 }}
-                  className="block py-2 px-4 rounded-md hover:bg-oa-gray/30 transition-colors"
-                >
-                  {l.label}
-                </motion.a>
-              ))}
-            </nav>
           </motion.div>
         )}
       </AnimatePresence>
