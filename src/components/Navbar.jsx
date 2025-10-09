@@ -14,6 +14,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a href="#hero" className="flex items-center gap-2">
           <LogoOA className="h-7 w-auto" />
+          <span className="text-oa-ink font-semibold"> - Awareness -</span>
           <span className="sr-only">Observauto</span>
         </a>
         <ul className="hidden md:flex items-center gap-6 text-oa-ink">
