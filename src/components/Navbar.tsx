@@ -1,4 +1,4 @@
-import LogoOA from './LogoOA.tsx'; // Actualizado a .tsx
+import LogoOA from './LogoOA.tsx';
 
 const links = [
   { href: "#que-es", label: "Qué es" },
@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/85 border-b border-oa-gray/30 shadow-sm">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a href="#hero" className="flex items-center gap-2">
-          <LogoOA className="h-7 w-auto" />1
+          <LogoOA className="h-7 w-auto" />1 {/* Aquí se añadió el '1' */}
           <span className="sr-only">Observauto</span>
         </a>
         <ul className="hidden md:flex items-center gap-6 text-oa-ink">
