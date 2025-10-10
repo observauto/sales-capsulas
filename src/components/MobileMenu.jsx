@@ -1,7 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import navLinks from '../config/navLinks'
 
-export default function MobileMenu({ links = navLinks }) {
+export default function MobileMenu({ links = [] }) {
   const [open, setOpen] = useState(false)
   const menuId = useId()
   const panelRef = useRef(null)
