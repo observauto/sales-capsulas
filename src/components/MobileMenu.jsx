@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { links } from './Navbar'
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false)
+  const menuId = useId()
 
-  const toggleMenu = () => setOpen(prev => !prev)
+  useEffect(() => {
+    if (!open) {
+      return
+    }
+
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
+  const toggleMenu = () => setOpen(previous => !previous)
   const closeMenu = () => setOpen(false)
 
   return (
@@ -12,44 +30,56 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={toggleMenu}
-        className="inline-flex items-center gap-2 rounded-pill border border-oa-gray/40 px-3 py-1.5 text-sm font-semibold text-oa-ink shadow-soft hover:border-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-oa-gray/40 bg-white/90 text-oa-ink shadow-soft transition focus:outline-none focus:ring-2 focus:ring-oa-red"
         aria-expanded={open}
-        aria-controls="mobile-nav"
+        aria-controls={menuId}
+        aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
       >
-        <span>{open ? 'Cerrar' : 'Menú'}</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          className="h-4 w-4"
-          aria-hidden="true"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6 transition-transform duration-200">
           {open ? (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
           )}
         </svg>
       </button>
-      {open && (
-        <div id="mobile-nav" className="absolute right-4 top-14 w-48 rounded-2xl border border-oa-gray/40 bg-white p-3 shadow-lg">
-          <ul className="flex flex-col gap-2 text-sm text-oa-ink">
+
+      <div
+        className={`fixed inset-0 z-40 transition-opacity duration-200 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        aria-hidden={!open}
+      >
+        <div className={`absolute inset-0 bg-black/30 backdrop-blur transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0'}`} onClick={closeMenu} />
+        <div
+          id={menuId}
+          role="dialog"
+          aria-modal="true"
+          className={`absolute inset-y-0 right-0 flex h-full w-full max-w-xs flex-col gap-6 bg-white/95 px-6 pb-10 pt-20 text-oa-ink shadow-xl backdrop-blur transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          <nav className="space-y-2 text-base font-semibold">
             {links.map(link => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="block rounded-xl px-3 py-2 hover:bg-oa-gray/20 hover:text-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
-                >
-                  {link.label}
-                </a>
-              </li>
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="flex items-center justify-between rounded-2xl px-4 py-3 transition-colors duration-200 hover:bg-oa-gray/40"
+              >
+                <span>{link.label}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
+                </svg>
+              </a>
             ))}
-          </ul>
+          </nav>
+
+          <button
+            type="button"
+            onClick={closeMenu}
+            className="mt-auto rounded-pill border border-oa-gray px-4 py-3 text-sm font-semibold text-oa-ink transition-colors duration-200 hover:border-oa-red hover:text-oa-red"
+          >
+            Cerrar menú
+          </button>
         </div>
-      )}
+      </div>
     </div>
   )
 }
