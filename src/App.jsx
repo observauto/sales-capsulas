@@ -1,25 +1,26 @@
+import React from "react";
 import Navbar from "./components/Navbar";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
-import FloatingWhatsApp from "./components/FloatingWhatsApp";
-import DemoSlider from "./components/DemoSlider";
+import Hero from "./components/Hero";
 import Concept from "./components/Concept";
+import CTA from "./components/CTA";
 import Philosophy from "./components/Philosophy";
 import ResultsDashboard from "./components/ResultsDashboard";
+import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
-function App() {
+export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <Navbar />
-      <CTA />
-      <DemoSlider />
-      <Concept />
-      <Philosophy />
-      <ResultsDashboard />
-      <FloatingWhatsApp />
+      <main>
+        <Hero />
+        <Concept />
+        <ResultsDashboard />
+        <Philosophy />
+        <CTA />
+      </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
-
-export default App;

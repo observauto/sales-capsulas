@@ -14,4 +14,10 @@ SPA creada con **React + Vite + Tailwind + Framer Motion** siguiendo identidad O
 4. Root: `/` (por defecto), comando build `npm run build`, output `dist/`.
 5. Deploy. Listo.
 
+## Variables de entorno
+- `VITE_HTTP_PROXY_ENABLED`: (`true`/`false`) activa el fallback de proxy.
+- `VITE_HTTP_PROXY_URL`: endpoint del proxy para solicitudes externas.
+- `VITE_HTTP_RETRY_ON_403`: controla si se reintenta al recibir un 403 (por defecto `true`).
+- `VITE_HTTP_TIMEOUT`: timeout en ms para las solicitudes (por defecto `15000`).
+
 _Construido: 2025-10-08T23:16:35.655884_

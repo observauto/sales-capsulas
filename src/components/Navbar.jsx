@@ -1,28 +1,65 @@
-import LogoOA from './LogoOA'
-import { navLinks } from '../config/navLinks'
+import React from "react";
+import navLinks from "../config/navLinks";
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <a href="/#hero" className="flex items-center gap-2 text-oa-ink">
-          <LogoOA className="h-7 w-auto" />
-          <span className="sr-only">Observauto Awareness</span>
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <a href="/" className="font-semibold tracking-tight">
+          ObservAuto • Awareness
         </a>
-        <ul className="hidden items-center gap-6 md:flex">
-          {navLinks.map(link => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="rounded-full px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-oa-ink/80 transition-colors duration-200 hover:bg-gray-100 hover:text-[#D70102] focus:outline-none focus:ring-2 focus:ring-[#D70102]/60"
-              >
-                {link.label}
-              </a>
-            </li>
+        <nav className="flex items-center gap-2">
+          {navLinks.slice(0, 2).map((link) => (
+            <a
+              key={link.path}
+              href={link.path}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            >
+              <span className="hidden sm:inline">{link.label}</span>
+              <span className="sm:hidden" aria-hidden="true">•</span>
+            </a>
           ))}
-        </ul>
-      </nav>
+
+          {/* Acciones rápidas en móvil/desktop (sin dependencias de iconos) */}
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Favoritos"
+            title="Favoritos"
+          >
+            <span>♥</span><span className="hidden sm:inline">Favoritos</span>
+          </button>
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Compartir"
+            title="Compartir"
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: "ObservAuto Awareness",
+                  text: "Elevator pitch digital respaldado por datos",
+                  url: window.location.href,
+                });
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Enlace copiado al portapapeles");
+              }
+            }}
+          >
+            <span>🔗</span><span className="hidden sm:inline">Compartir</span>
+          </button>
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Cambiar tema"
+            title="Cambiar tema"
+            onClick={() => document.documentElement.classList.toggle("dark")}
+          >
+            <span>🌓</span><span className="hidden sm:inline">Tema</span>
+          </button>
+        </nav>
+      </div>
     </header>
-  )
+  );
 }
-// codex: smoke test (no cambies nada más)

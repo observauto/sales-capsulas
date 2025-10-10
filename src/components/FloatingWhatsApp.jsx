@@ -1,16 +1,18 @@
+import React from "react";
+
 export default function FloatingWhatsApp() {
+  // Puedes configurar tu enlace real de WhatsApp:
+  const wa = "https://wa.me/573000000000?text=Hola%20ObservAuto%2C%20quiero%20saber%20m%C3%A1s%20de%20C%C3%A1psulas";
   return (
     <a
-      href="https://wa.me/573053500400?text=Hola%20Observauto%2C%20quiero%20saber%20m%C3%A1s%20de%20Awareness"
+      href={wa}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center rounded-full bg-green-500 text-white h-14 w-14 shadow-lg hover:scale-105 transition"
-      aria-label="Escríbenos por WhatsApp"
+      className="fixed bottom-5 right-5 inline-flex items-center justify-center w-12 h-12 rounded-full shadow-lg border border-gray-200 bg-white hover:bg-gray-50"
+      aria-label="WhatsApp"
+      title="Escríbenos por WhatsApp"
     >
-      {/* ícono WhatsApp simple */}
-      <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
-        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06.12C5.65.12.5 5.27.5 11.68c0 2.05.54 4.04 1.58 5.8L.12 23.88l6.55-1.9a11.64 11.64 0 0 0 5.39 1.36h.01c6.41 0 11.56-5.15 11.56-11.56 0-3.09-1.2-6-3.51-8.3ZM12.07 21a9.31 9.31 0 0 1-4.75-1.3l-.34-.2-3.89 1.12 1.13-3.79-.22-.35a9.34 9.34 0 0 1-1.45-5.02c0-5.15 4.19-9.34 9.35-9.34 2.49 0 4.83.97 6.6 2.73a9.3 9.3 0 0 1 2.74 6.61c0 5.15-4.2 9.34-9.37 9.34Zm5.42-6.97c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.68.15-.2.3-.78.96-.95 1.16-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.5-1.76-1.67-2.06-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.64-.93-2.24-.24-.58-.49-.5-.68-.5h-.58c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.13 3.25 5.16 4.55.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.4.25-.68.25-1.26.18-1.4-.07-.14-.27-.22-.57-.37Z"/>
-      </svg>
+      <span role="img" aria-label="whatsapp">💬</span>
     </a>
   );
 }

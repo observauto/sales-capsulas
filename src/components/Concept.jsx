@@ -1,14 +1,17 @@
+import React from "react";
+
 export default function Concept() {
   return (
-    <section id="concepto" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-        Concepto
-      </h2>
-      <p className="mt-4 text-gray-600 max-w-3xl">
-        Awareness es un elevator pitch digital para marcas del sector
-        automotriz: combina contenidos cortos, claros y accionables con
-        visualizaciones de datos para demostrar impacto real.
-      </p>
+    <section className="py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl font-semibold">Concepto</h2>
+        <p className="mt-3 text-gray-700 max-w-3xl">
+          Awareness presenta el “por qué” detrás de las Cápsulas ObservAuto:
+          microcontenidos estáticos optimizados para móvil que aceleran
+          el entendimiento del producto, habilitan a la fuerza comercial y
+          crean puntos de contacto patrocinables y medibles.
+        </p>
+      </div>
     </section>
   );
 }

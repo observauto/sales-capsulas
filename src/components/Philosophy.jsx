@@ -1,13 +1,16 @@
+import React from "react";
+
 export default function Philosophy() {
   return (
-    <section id="filosofia" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-        Filosofía
-      </h2>
-      <p className="mt-4 text-gray-600 max-w-3xl">
-        Diseñamos para lograr claridad, velocidad y credibilidad. La
-        comunicación debe ser medible, persuasive y fácil de accionar.
-      </p>
+    <section className="py-12 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-xl sm:text-2xl font-semibold">Filosofía</h2>
+        <p className="mt-3 text-gray-700 max-w-3xl">
+          Diseñamos para claridad, consistencia y velocidad. Cada cápsula prioriza
+          la comprensión inmediata, el soporte comercial y la medición, manteniendo
+          la identidad y el tono editorial de ObservAuto.
+        </p>
+      </div>
     </section>
   );
 }

@@ -9,7 +9,8 @@ const STEPS = [
 
 export default function Steps() {
   return (
-    <section id="como-funciona" className="bg-oa-white py-20">
+    <section id="como-funciona" className="relative bg-oa-white py-20">
+      <span id="ingreso" aria-hidden="true" className="pointer-events-none absolute -top-24 h-1 w-1" />
       <div className="mx-auto max-w-6xl px-6">
         <p className="text-[0.7rem] uppercase tracking-[0.34em] text-oa-ink/50">Roadmap Awareness</p>
         <h2 className="mt-4 text-3xl font-black leading-tight text-oa-blue md:text-4xl">Simples, efectivas y medibles</h2>
