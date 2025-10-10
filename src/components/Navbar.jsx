@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[color:var(--oa-border)] bg-white/80 backdrop-blur">
       <div className="container flex items-center justify-between py-4">
-        <a href="/#hero" className="flex items-center gap-2 text-[color:var(--oa-fg)]">
+        <a href="#hero" className="flex items-center gap-2 text-[color:var(--oa-fg)]">
           <LogoOA className="h-7 w-auto" />
           <span className="sr-only">Observauto Awareness</span>
         </a>
