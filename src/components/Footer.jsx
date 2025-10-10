@@ -30,30 +30,9 @@ export default function Footer() {
               Producto
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="/#como-funciona"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Cómo funciona
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#resultados"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Resultados
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/pauta"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Pauta
-                </a>
-              </li>
+              <li><a href="/#como-funciona" className="text-gray-600 hover:text-gray-900">Cómo funciona</a></li>
+              <li><a href="/#resultados" className="text-gray-600 hover:text-gray-900">Resultados</a></li>
+              <li><a href="/pauta" className="text-gray-600 hover:text-gray-900">Pauta</a></li>
             </ul>
           </div>
 
@@ -62,36 +41,9 @@ export default function Footer() {
               Recursos
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://stats.observauto.com/pauta/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Guía de estilo
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://stats.observauto.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Panel de datos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://capsulas.observauto.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  Sitio histórico
-                </a>
-              </li>
+              <li><a href="https://stats.observauto.com/pauta/" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900">Guía de estilo</a></li>
+              <li><a href="https://stats.observauto.com/" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900">Panel de datos</a></li>
+              <li><a href="https://capsulas.observauto.com/" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900">Sitio histórico</a></li>
             </ul>
           </div>
 
@@ -100,19 +52,11 @@ export default function Footer() {
               Contacto
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="mailto:info@observauto.com"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  info@observauto.com
-                </a>
-              </li>
+              <li><a href="mailto:info@observauto.com" className="text-gray-600 hover:text-gray-900">info@observauto.com</a></li>
               <li>
                 <a
                   href="https://wa.me/573053500400?text=Hola%20Observauto%2C%20quiero%20saber%20m%C3%A1s%20de%20Awareness"
-                  target="_blank"
-                  rel="noreferrer"
+                  target="_blank" rel="noreferrer"
                   className="text-gray-600 hover:text-gray-900"
                 >
                   +57 305 350 0400 (WhatsApp)
@@ -121,42 +65,10 @@ export default function Footer() {
             </ul>
 
             <div className="mt-4 flex items-center gap-4 text-gray-500">
-              <a
-                href="https://twitter.com/observauto"
-                aria-label="Twitter"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-gray-900"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://instagram.com/observauto"
-                aria-label="Instagram"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-gray-900"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://youtube.com/@observauto"
-                aria-label="YouTube"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-gray-900"
-              >
-                <Youtube className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com/company/observauto"
-                aria-label="LinkedIn"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-gray-900"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+              <a href="https://twitter.com/observauto" aria-label="Twitter" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Twitter className="h-5 w-5" /></a>
+              <a href="https://instagram.com/observauto" aria-label="Instagram" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Instagram className="h-5 w-5" /></a>
+              <a href="https://youtube.com/@observauto" aria-label="YouTube" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Youtube className="h-5 w-5" /></a>
+              <a href="https://linkedin.com/company/observauto" aria-label="LinkedIn" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Linkedin className="h-5 w-5" /></a>
             </div>
           </div>
         </div>
@@ -164,15 +76,9 @@ export default function Footer() {
         <div className="mt-10 border-t border-gray-200 pt-6 text-sm text-gray-500 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p>© {year} Observauto. Todos los derechos reservados.</p>
           <div className="flex gap-4">
-            <a href="/legal/terminos" className="hover:text-gray-900">
-              Términos
-            </a>
-            <a href="/legal/privacidad" className="hover:text-gray-900">
-              Privacidad
-            </a>
-            <a href="/legal/cookies" className="hover:text-gray-900">
-              Cookies
-            </a>
+            <a href="/legal/terminos" className="hover:text-gray-900">Términos</a>
+            <a href="/legal/privacidad" className="hover:text-gray-900">Privacidad</a>
+            <a href="/legal/cookies" className="hover:text-gray-900">Cookies</a>
           </div>
         </div>
       </div>
