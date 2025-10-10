@@ -34,10 +34,10 @@ export default function Concept() {
             Concepto Awareness
           </span>
           <h2 className="mt-6 text-3xl font-black leading-tight text-oa-ink md:text-4xl">
-            Awareness transforma métricas en narrativa accionable.
+            Awareness transforma métricas en una experiencia guiada.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-oa-ink/80">
-            Elevamos la experiencia narrativa de Observauto combinando datos, visión de producto y storytelling audiovisual.
+            Articulamos datos, visión de producto y storytelling audiovisual para que cada persona viva la propuesta Observauto desde el primer minuto.
           </p>
           <div className="mt-8 space-y-5 rounded-3xl border border-oa-gray/60 bg-white/80 p-6 shadow-soft">
             <h3 className="text-xs font-semibold uppercase tracking-[0.34em] text-oa-ink/60">Qué incluye</h3>

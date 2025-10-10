@@ -17,7 +17,7 @@ export default function Footer() {
               <span className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gray-700">Awareness</span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              Experiencia digital respaldada por datos. Comunicación que convierte conocimiento en confianza.
+              Experiencia digital respaldada por datos que conecta equipos y audiencias con la visión Observauto.
             </p>
           </div>
 
