@@ -5,25 +5,48 @@ const SLIDES = [
   {
     title: 'Dashboard ejecutivo',
     description:
-      'Resumen de métricas en un layout a pantalla completa inspirado en stats.observauto.com/pauta. Ideal para reuniones rápidas con dirección.',
-    highlights: ['Retención minuto a minuto', 'Top historias vistas', 'CTA más presionado'],
+      'Resumen a pantalla completa con KPIs, objetivos y focos comerciales listos para la próxima reunión de directorio.',
+    highlights: ['Retención minuto a minuto', 'Objetivos por vertical', 'CTA más activado'],
     colors: 'from-oa-blue/90 via-oa-blue to-oa-red/80'
   },
   {
     title: 'Historia interactiva',
     description:
-      'Timeline animado que combina video corto, texto y datos claves. Pensado para captar atención en mobile con scroll mínimo.',
-    highlights: ['Video embed', 'Microcopy guiado', 'Botón de agenda'],
-    colors: 'from-oa-red/90 via-oa-blue/80 to-oa-blue/60'
+      'Narrativa audiovisual con video, microcopy y datos clave diseñada para mobile-first con scroll mínimo.',
+    highlights: ['Video corto', 'Microinteracciones', 'CTA contextual'],
+    colors: 'from-[#0B1426] via-oa-red/80 to-oa-blue/70'
   },
   {
     title: 'Panel de seguimiento',
     description:
-      'Capa táctica para equipos comerciales. Segmenta leads, registra interacciones y sincroniza con CRM.',
-    highlights: ['Alertas automáticas', 'Integración CRM', 'Exportación 1 click'],
-    colors: 'from-oa-blue/70 via-oa-red/80 to-oa-red/60'
+      'Segmentación de leads y registro de interacciones sincronizado con CRM y herramientas de marketing automation.',
+    highlights: ['Alertas automáticas', 'Integración CRM', 'Exportación inmediata'],
+    colors: 'from-oa-blue/80 via-oa-red/70 to-oa-red/60'
+  },
+  {
+    title: 'Mapa de audiencias',
+    description:
+      'Visualización geográfica y por perfiles para priorizar territorios comerciales con datos en vivo.',
+    highlights: ['Heatmap responsivo', 'Segmentos prioritarios', 'Benchmark regional'],
+    colors: 'from-[#102345] via-[#1F3CFF] to-[#D70102]'
+  },
+  {
+    title: 'Experiencia inmersiva',
+    description:
+      'Prototipo navegable que combina realidad aumentada ligera y componentes web para showroom remoto.',
+    highlights: ['Anclajes 3D', 'Storyliving', 'Conversación guiada'],
+    colors: 'from-[#061126] via-[#203A91] to-[#F75D4D]'
+  },
+  {
+    title: 'Reporte retroactivo',
+    description:
+      'Entrega mensual con aprendizajes accionables, salud del pipeline y próximos experimentos sugeridos.',
+    highlights: ['Insights clave', 'Health-score Awareness', 'Siguientes experiments'],
+    colors: 'from-[#0B1426] via-[#2338B5] to-[#F03855]'
   }
 ]
+
+const SLIDE_DURATION = 7_000
 
 const slideTransition = {
   initial: { opacity: 0, y: 24 },
@@ -37,10 +60,14 @@ export default function DemoSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex(index => (index + 1) % SLIDES.length)
-    }, 6000)
+    }, SLIDE_DURATION)
 
     return () => clearInterval(interval)
   }, [])
+
+  const goToSlide = index => {
+    setActiveIndex(index)
+  }
 
   return (
     <section id="demo" className="relative bg-oa-ink py-24 text-white">
@@ -48,12 +75,12 @@ export default function DemoSlider() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="inline-flex items-center rounded-pill bg-white/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-white/80">
-              Demo visual
+            <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-white/80">
+              Demo visual Awareness
             </span>
             <h2 className="mt-4 text-3xl font-black leading-tight md:text-4xl">Visualizaciones en constante evolución.</h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75">
-              Recorre los tres modos principales de Awareness. Cada slide muestra combinaciones de componentes reutilizables y adaptables a diferentes industrias.
+              Recorre los seis modos principales de Awareness. Cada slide combina componentes reutilizables inspirados en stats.observauto.com/pauta para activar nuevas conversaciones.
             </p>
           </div>
           <div className="flex gap-3">
@@ -61,11 +88,12 @@ export default function DemoSlider() {
               <button
                 key={slide.title}
                 type="button"
-                onClick={() => setActiveIndex(index)}
+                onClick={() => goToSlide(index)}
                 className={`h-10 w-10 rounded-full border ${
-                  activeIndex === index ? 'border-white bg-white/20' : 'border-white/30 bg-white/5'
+                  activeIndex === index ? 'border-white bg-white/20 text-white' : 'border-white/30 bg-white/5 text-white/70'
                 } text-xs font-semibold uppercase tracking-[0.2em] transition`}
                 aria-label={`Ver ${slide.title}`}
+                aria-current={activeIndex === index}
               >
                 {index + 1}
               </button>
@@ -78,7 +106,7 @@ export default function DemoSlider() {
             <AnimatePresence mode="wait">
               <motion.div key={activeIndex} {...slideTransition} transition={{ duration: 0.5 }}>
                 <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-                  <div className="space-y-6">
+                  <div className="space-y-6" aria-live="polite">
                     <div>
                       <p className="text-[0.68rem] uppercase tracking-[0.32em] text-white/50">{`Escenario ${activeIndex + 1}`}</p>
                       <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">{SLIDES[activeIndex].title}</h3>
@@ -110,16 +138,18 @@ export default function DemoSlider() {
                         </div>
                         <div className="mt-4 h-32 rounded-2xl bg-white/10 backdrop-blur">
                           <motion.div
+                            key={`${activeIndex}-bar`}
                             initial={{ width: '0%' }}
-                            animate={{ width: ['0%', '76%', '58%'] }}
-                            transition={{ duration: 4.8, repeat: Infinity, repeatDelay: 1.4 }}
+                            animate={{ width: ['0%', '78%', '54%'] }}
+                            transition={{ duration: 5.4, repeat: Infinity, repeatDelay: 1.2 }}
                             className="h-3 rounded-full bg-white/70"
                             style={{ margin: '18px 16px 0' }}
                           />
                           <motion.div
+                            key={`${activeIndex}-card`}
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: [0.2, 1, 0.4], y: [12, 0, 4] }}
-                            transition={{ duration: 4.2, repeat: Infinity, repeatType: 'mirror' }}
+                            transition={{ duration: 5, repeat: Infinity, repeatType: 'mirror' }}
                             className="mx-4 mt-6 rounded-2xl border border-white/30 bg-black/40 p-4"
                           >
                             <div className="text-sm font-semibold text-white">Indicador clave</div>
@@ -146,20 +176,20 @@ export default function DemoSlider() {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-8">
           <div className="flex items-center justify-between text-[0.68rem] uppercase tracking-[0.36em] text-white/60">
             <span>{SLIDES[activeIndex].title}</span>
             <span>
               {activeIndex + 1} / {SLIDES.length}
             </span>
           </div>
-          <div className="mt-2 h-1 rounded-full bg-white/10">
+          <div className="mt-3 h-1.5 rounded-full bg-white/10">
             <motion.div
               key={activeIndex}
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
-              transition={{ duration: 6, ease: 'linear' }}
-              className="h-1 rounded-full bg-gradient-to-r from-oa-red via-oa-blue to-white"
+              transition={{ duration: SLIDE_DURATION / 1000, ease: 'linear' }}
+              className="h-1.5 rounded-full bg-gradient-to-r from-[#0B1426] via-[#1F3CFF] to-[#D70102]"
             />
           </div>
         </div>
