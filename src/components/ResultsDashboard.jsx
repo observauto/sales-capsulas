@@ -31,17 +31,17 @@ export default function ResultsDashboard() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="inline-flex items-center rounded-pill bg-oa-red/10 px-4 py-1 text-sm font-semibold text-oa-red">
+            <span className="inline-flex items-center rounded-pill bg-oa-red/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.34em] text-oa-red">
               Resultados
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold text-oa-ink md:text-4xl">
+            <h2 className="mt-4 text-3xl font-black leading-tight text-oa-ink md:text-4xl">
               Dashboards vivos para decisiones en minutos.
             </h2>
-            <p className="mt-3 max-w-xl text-base text-oa-ink/75">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-oa-ink/75">
               Monitoreamos performance en tiempo real con paneles que replican la visual del portal de pauta y entregan contexto para Ventas y Marketing.
             </p>
           </div>
-          <p className="text-sm uppercase tracking-[0.3em] text-oa-ink/60">Promedios Q1-Q2 · Observauto</p>
+          <p className="text-xs uppercase tracking-[0.38em] text-oa-ink/60">Promedios Q1-Q2 · Observauto</p>
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1fr]">
@@ -49,8 +49,8 @@ export default function ResultsDashboard() {
             <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-oa-red/10 blur-3xl" aria-hidden />
             <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-oa-blue/80">Retención del pitch</h3>
-                <p className="mt-2 text-sm text-oa-ink/60">
+                <h3 className="text-lg font-semibold uppercase tracking-[0.2em] text-oa-blue/70">Retención del pitch</h3>
+                <p className="mt-3 text-sm leading-relaxed text-oa-ink/60">
                   Retención promedio hasta el final de la cápsula Awareness en audiencias frías.
                 </p>
               </div>
@@ -76,8 +76,8 @@ export default function ResultsDashboard() {
                   className="absolute h-1 w-20 origin-left rounded-full bg-oa-blue"
                 />
                 <div className="absolute flex flex-col items-center">
-                  <span className="text-3xl font-extrabold text-oa-ink">82%</span>
-                  <span className="text-xs uppercase tracking-[0.3em] text-oa-ink/60">VTR</span>
+                  <span className="text-3xl font-black text-oa-ink">82%</span>
+                  <span className="text-[0.68rem] uppercase tracking-[0.38em] text-oa-ink/60">VTR</span>
                 </div>
               </div>
             </div>
@@ -86,11 +86,11 @@ export default function ResultsDashboard() {
           <div className="grid gap-8">
             <div className="relative overflow-hidden rounded-3xl border border-oa-gray/60 bg-white p-8 shadow-soft">
               <div className="absolute -right-14 -top-10 h-32 w-32 rounded-full bg-oa-blue/10 blur-3xl" aria-hidden />
-              <h3 className="text-lg font-semibold text-oa-blue/80">Interacción por módulo</h3>
+              <h3 className="text-lg font-semibold uppercase tracking-[0.2em] text-oa-blue/70">Interacción por módulo</h3>
               <div className="mt-6 space-y-4">
                 {BAR_LEVELS.map((bar, index) => (
                   <div key={bar.label}>
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-oa-ink/50">
+                    <div className="flex items-center justify-between text-[0.68rem] uppercase tracking-[0.32em] text-oa-ink/50">
                       <span>{bar.label}</span>
                       <span>{bar.value}%</span>
                     </div>
@@ -109,7 +109,7 @@ export default function ResultsDashboard() {
 
             <div className="relative overflow-hidden rounded-3xl border border-oa-gray/60 bg-white p-8 shadow-soft">
               <div className="absolute -left-16 bottom-0 h-28 w-28 rounded-full bg-oa-red/10 blur-3xl" aria-hidden />
-              <h3 className="text-lg font-semibold text-oa-blue/80">Indicador de pipeline</h3>
+              <h3 className="text-lg font-semibold uppercase tracking-[0.2em] text-oa-blue/70">Indicador de pipeline</h3>
               <div className="mt-6 flex items-center gap-6">
                 <div className="relative h-24 w-24 rounded-full border-8 border-oa-gray/40 bg-white">
                   <div className="absolute inset-3 rounded-full bg-gradient-to-br from-oa-blue/90 to-oa-red/70" />
@@ -124,7 +124,7 @@ export default function ResultsDashboard() {
                     </motion.span>
                   </div>
                 </div>
-                <div className="space-y-3 text-sm text-oa-ink/70">
+                <div className="space-y-3 text-sm leading-relaxed text-oa-ink/70">
                   <p><strong className="text-oa-ink">3.4x</strong> pipeline respecto a benchmarks del sector automotriz.</p>
                   <p>80% de los leads solicitan seguimiento posterior a la cápsula.</p>
                 </div>
@@ -132,7 +132,7 @@ export default function ResultsDashboard() {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-xs text-oa-ink/50">* Visualización inspirada en stats.observauto.com/pauta — datos internos Observauto.</p>
+        <p className="mt-8 text-[0.68rem] uppercase tracking-[0.32em] text-oa-ink/50">* Visualización inspirada en stats.observauto.com/pauta — datos internos Observauto.</p>
       </div>
     </section>
   )

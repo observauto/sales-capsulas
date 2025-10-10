@@ -12,37 +12,37 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2">
               <img src="/logo.svg" alt="Observauto" className="h-7 w-auto" loading="lazy" />
-              <span className="text-sm font-medium text-gray-700">Awareness</span>
+              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gray-700">Awareness</span>
             </div>
-            <p className="mt-3 text-sm leading-6 text-gray-600">
+            <p className="mt-3 text-sm leading-relaxed text-gray-600">
               Elevator pitch digital respaldado por datos. Comunicación que convierte conocimiento en confianza.
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">Producto</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="/#como-funciona" className="text-gray-600 hover:text-gray-900">Cómo funciona</a></li>
-              <li><a href="/#resultados" className="text-gray-600 hover:text-gray-900">Resultados</a></li>
-              <li><a href="/pauta" className="text-gray-600 hover:text-gray-900">Pauta</a></li>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.32em] text-gray-900">Producto</h3>
+            <ul className="mt-4 space-y-2 text-sm uppercase tracking-[0.26em] text-gray-600">
+              <li><a href="/#como-funciona" className="hover:text-gray-900">Cómo funciona</a></li>
+              <li><a href="/#resultados" className="hover:text-gray-900">Resultados</a></li>
+              <li><a href="/pauta" className="hover:text-gray-900">Pauta</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">Recursos</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="https://stats.observauto.com/pauta/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noreferrer">Guía de estilo</a></li>
-              <li><a href="https://stats.observauto.com/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noreferrer">Panel de datos</a></li>
-              <li><a href="https://capsulas.observauto.com/" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noreferrer">Sitio histórico</a></li>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.32em] text-gray-900">Recursos</h3>
+            <ul className="mt-4 space-y-2 text-sm uppercase tracking-[0.26em] text-gray-600">
+              <li><a href="https://stats.observauto.com/pauta/" className="hover:text-gray-900" target="_blank" rel="noreferrer">Guía de estilo</a></li>
+              <li><a href="https://stats.observauto.com/" className="hover:text-gray-900" target="_blank" rel="noreferrer">Panel de datos</a></li>
+              <li><a href="https://capsulas.observauto.com/" className="hover:text-gray-900" target="_blank" rel="noreferrer">Sitio histórico</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">Contacto</h3>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="mailto:info@observauto.com" className="text-gray-600 hover:text-gray-900">info@observauto.com</a></li>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.32em] text-gray-900">Contacto</h3>
+            <ul className="mt-4 space-y-2 text-sm uppercase tracking-[0.26em] text-gray-600">
+              <li><a href="mailto:info@observauto.com" className="hover:text-gray-900">info@observauto.com</a></li>
               <li>
-                <a href="https://wa.me/573053500400?text=Hola%20Observauto%2C%20quiero%20saber%20m%C3%A1s%20de%20Awareness" className="text-gray-600 hover:text-gray-900" target="_blank" rel="noreferrer">
+                <a href="https://wa.me/573053500400?text=Hola%20Observauto%2C%20quiero%20saber%20m%C3%A1s%20de%20Awareness" className="hover:text-gray-900" target="_blank" rel="noreferrer">
                   +57 305 350 0400 (WhatsApp)
                 </a>
               </li>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-gray-200 pt-6 text-sm text-gray-500 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div className="mt-10 flex flex-col gap-3 border-t border-gray-200 pt-6 text-xs uppercase tracking-[0.32em] text-gray-500 md:flex-row md:items-center md:justify-between">
           <p>© {year} Observauto. Todos los derechos reservados.</p>
           <div className="flex gap-4">
             <a href="/legal/terminos" className="hover:text-gray-900">Términos</a>

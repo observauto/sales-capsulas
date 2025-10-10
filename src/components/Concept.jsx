@@ -27,16 +27,17 @@ export default function Concept() {
           transition={{ duration: 0.6 }}
           className="lg:w-5/12"
         >
-          <span className="inline-flex items-center rounded-pill bg-oa-blue/10 px-4 py-1 text-sm font-semibold text-oa-blue">
+          <span className="inline-flex items-center rounded-pill bg-oa-blue/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-oa-blue">
             Concepto
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold text-oa-blue md:text-4xl">
+          <h2 className="mt-5 text-3xl font-black leading-tight text-oa-blue md:text-4xl">
             Awareness es el elevator pitch digital de Observauto.
           </h2>
-          <p className="mt-4 text-lg text-oa-ink/80">
+          <p className="mt-5 text-lg leading-relaxed text-oa-ink/80">
             Cada cápsula sintetiza datos, visión y propuesta de valor en un formato interactivo que inspira confianza y acción.
           </p>
-          <div className="mt-6 space-y-3 text-sm text-oa-ink/70">
+          <div className="mt-6 space-y-3 text-sm leading-relaxed text-oa-ink/65">
+            <p className="uppercase tracking-[0.22em] text-oa-ink/50">Highlights</p>
             <p>• Storytelling de 2 minutos con foco en decisiones.</p>
             <p>• Integración con CRM y seguimiento de comportamiento.</p>
             <p>• Assets editables para equipos de ventas y marketing.</p>
@@ -53,8 +54,9 @@ export default function Concept() {
               className="relative overflow-hidden rounded-3xl border border-oa-gray/70 bg-gradient-to-br from-white via-white to-oa-gray/40 p-8 shadow-soft"
             >
               <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-oa-blue/10 blur-3xl" aria-hidden />
-              <h3 className="text-xl font-bold text-oa-ink">{pillar.title}</h3>
-              <p className="mt-3 text-base text-oa-ink/75">{pillar.text}</p>
+              <p className="text-[0.7rem] uppercase tracking-[0.28em] text-oa-blue/70">{`Pilar ${index + 1}`}</p>
+              <h3 className="mt-3 text-xl font-semibold leading-tight text-oa-ink">{pillar.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-oa-ink/75">{pillar.text}</p>
             </motion.article>
           ))}
         </div>

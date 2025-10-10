@@ -15,7 +15,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="rounded-pill px-3 py-1.5 transition-all duration-200 hover:bg-oa-gray/30 hover:text-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
+                className="rounded-pill px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-oa-ink/70 transition-all duration-200 hover:bg-oa-gray/30 hover:text-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
               >
                 {link.label}
               </a>

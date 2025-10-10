@@ -33,16 +33,16 @@ export default function Philosophy() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center rounded-pill bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide text-white/80 uppercase">
+            <span className="inline-flex items-center rounded-pill bg-white/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.38em] text-white/70">
               Filosofía
             </span>
-            <h2 className="mt-6 text-3xl font-extrabold md:text-5xl">
+            <h2 className="mt-6 text-3xl font-black leading-tight md:text-5xl">
               Propósito: traducir tecnología automotriz en historias que movilizan.
             </h2>
-            <p className="mt-5 text-lg text-white/80">
+            <p className="mt-5 text-lg leading-relaxed text-white/80">
               Awareness alinea equipos comerciales, marketing y C-Level alrededor de un mismo pitch con datos confiables y visualización estratégica.
             </p>
-            <p className="mt-4 text-base text-white/70">
+            <p className="mt-4 text-base uppercase tracking-[0.24em] text-white/60">
               “Una cápsula no vende un producto, construye autoridad.”
             </p>
           </motion.div>
@@ -57,9 +57,9 @@ export default function Philosophy() {
                 className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur"
               >
                 <div className="absolute -left-14 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-oa-red/20 blur-3xl" aria-hidden />
-                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/60">{principle.tag}</span>
-                <h3 className="mt-3 text-2xl font-bold">{principle.title}</h3>
-                <p className="mt-3 text-white/75">{principle.description}</p>
+                <span className="text-xs font-semibold uppercase tracking-[0.4em] text-white/60">{principle.tag}</span>
+                <h3 className="mt-3 text-2xl font-semibold leading-tight">{principle.title}</h3>
+                <p className="mt-3 leading-relaxed text-white/75">{principle.description}</p>
               </motion.article>
             ))}
           </div>
