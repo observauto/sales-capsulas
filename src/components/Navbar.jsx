@@ -1,15 +1,6 @@
 import LogoOA from './LogoOA'
 import MobileMenu from './MobileMenu'
-
-export const links = [
-  { href: '#hero', label: 'Inicio' },
-  { href: '#que-es', label: 'Qué es' },
-  { href: '#proposito', label: 'Propósito' },
-  { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#resultados', label: 'Resultados' },
-  { href: '#demo', label: 'Demo' },
-  { href: '/pauta', label: 'Pauta' }
-]
+import { navLinks } from '../config/navLinks'
 
 export default function Navbar() {
   return (
@@ -20,7 +11,7 @@ export default function Navbar() {
           <span className="sr-only">Observauto</span>
         </a>
         <ul className="hidden items-center gap-6 text-oa-ink md:flex">
-          {links.map(link => (
+          {navLinks.map(link => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -31,7 +22,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <MobileMenu />
+        <MobileMenu links={navLinks} />
       </nav>
     </header>
   )

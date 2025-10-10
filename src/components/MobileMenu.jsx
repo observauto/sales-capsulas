@@ -1,12 +1,14 @@
-import { useEffect, useId, useState } from 'react'
-import { links } from './Navbar'
+import { useEffect, useId, useRef, useState } from 'react'
+import navLinks from '../config/navLinks'
 
-export default function MobileMenu() {
+export default function MobileMenu({ links = navLinks }) {
   const [open, setOpen] = useState(false)
   const menuId = useId()
+  const panelRef = useRef(null)
 
   useEffect(() => {
     if (!open) {
+      document.body.style.removeProperty('overflow')
       return
     }
 
@@ -17,8 +19,12 @@ export default function MobileMenu() {
     }
 
     window.addEventListener('keydown', handleKeyDown)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    panelRef.current?.focus()
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
     }
   }, [open])
 
@@ -34,6 +40,7 @@ export default function MobileMenu() {
         aria-expanded={open}
         aria-controls={menuId}
         aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+        aria-haspopup="true"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6 transition-transform duration-200">
           {open ? (
@@ -48,11 +55,17 @@ export default function MobileMenu() {
         className={`fixed inset-0 z-40 transition-opacity duration-200 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
         aria-hidden={!open}
       >
-        <div className={`absolute inset-0 bg-black/30 backdrop-blur transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0'}`} onClick={closeMenu} />
+        <div
+          className={`absolute inset-0 bg-black/30 backdrop-blur transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0'}`}
+          aria-hidden="true"
+          onClick={closeMenu}
+        />
         <div
           id={menuId}
           role="dialog"
           aria-modal="true"
+          ref={panelRef}
+          tabIndex={-1}
           className={`absolute inset-y-0 right-0 flex h-full w-full max-w-xs flex-col gap-6 bg-white/95 px-6 pb-10 pt-20 text-oa-ink shadow-xl backdrop-blur transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <nav className="space-y-2 text-base font-semibold">
