@@ -1,4 +1,4 @@
-const LOGO_URL = "https://TU-URL-DEL-LOGO.svg"
+const LOGO_URL = "https://stats.observauto.com/pauta/logo_full.png"
 
 export default function Footer() {
   const year = new Date().getFullYear()
