@@ -64,12 +64,13 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="mt-4 flex items-center gap-4 text-gray-500">
-              <a href="https://twitter.com/observauto" aria-label="Twitter" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Twitter className="h-5 w-5" /></a>
-              <a href="https://instagram.com/observauto" aria-label="Instagram" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Instagram className="h-5 w-5" /></a>
-              <a href="https://youtube.com/@observauto" aria-label="YouTube" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Youtube className="h-5 w-5" /></a>
-              <a href="https://linkedin.com/company/observauto" aria-label="LinkedIn" target="_blank" rel="noreferrer" className="hover:text-gray-900"><Linkedin className="h-5 w-5" /></a>
-            </div>
+           <div className="mt-4 flex items-center gap-4">
+  <SocialIcon href="https://twitter.com/observauto"  src="https://api.iconify.design/lucide:twitter.svg"  alt="X / Twitter" />
+  <SocialIcon href="https://instagram.com/observauto" src="https://api.iconify.design/lucide:instagram.svg" alt="Instagram" />
+  <SocialIcon href="https://youtube.com/@observauto"  src="https://api.iconify.design/lucide:youtube.svg"  alt="YouTube" />
+  <SocialIcon href="https://linkedin.com/company/observauto" src="https://api.iconify.design/lucide:linkedin.svg" alt="LinkedIn" />
+</div>
+
           </div>
         </div>
 
