@@ -15,7 +15,6 @@ SPA creada con **React + Vite + Tailwind + Framer Motion** siguiendo identidad O
 5. Deploy. Listo.
 
 ## Variables de entorno
-- `VITE_ACCESS_CODE`: código temporal para desbloquear el Access Gate.
 - `VITE_HTTP_PROXY_ENABLED`: (`true`/`false`) activa el fallback de proxy.
 - `VITE_HTTP_PROXY_URL`: endpoint del proxy para solicitudes externas.
 - `VITE_HTTP_RETRY_ON_403`: controla si se reintenta al recibir un 403 (por defecto `true`).
