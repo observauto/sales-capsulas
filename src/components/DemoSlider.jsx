@@ -40,7 +40,7 @@ export default function DemoSlider() {
     }, 6000)
 
     return () => clearInterval(interval)
-  }, [activeIndex])
+  }, [])
 
   return (
     <section id="demo" className="relative bg-oa-ink py-24 text-white">
@@ -62,7 +62,9 @@ export default function DemoSlider() {
                 key={slide.title}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`h-10 w-10 rounded-full border ${activeIndex === index ? 'border-white bg-white/20' : 'border-white/30 bg-white/5'} text-xs font-semibold uppercase tracking-[0.2em] transition`}
+                className={`h-10 w-10 rounded-full border ${
+                  activeIndex === index ? 'border-white bg-white/20' : 'border-white/30 bg-white/5'
+                } text-xs font-semibold uppercase tracking-[0.2em] transition`}
                 aria-label={`Ver ${slide.title}`}
               >
                 {index + 1}
@@ -76,14 +78,14 @@ export default function DemoSlider() {
             <AnimatePresence mode="wait">
               <motion.div key={activeIndex} {...slideTransition} transition={{ duration: 0.5 }}>
                 <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-                    <div className="space-y-6">
-                      <div>
-                        <p className="text-[0.68rem] uppercase tracking-[0.32em] text-white/50">{`Escenario ${activeIndex + 1}`}</p>
-                        <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">{SLIDES[activeIndex].title}</h3>
-                        <p className="mt-3 text-base leading-relaxed text-white/70">{SLIDES[activeIndex].description}</p>
-                      </div>
-                      <ul className="space-y-3 text-sm text-white/70">
-                        {SLIDES[activeIndex].highlights.map(item => (
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-[0.68rem] uppercase tracking-[0.32em] text-white/50">{`Escenario ${activeIndex + 1}`}</p>
+                      <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">{SLIDES[activeIndex].title}</h3>
+                      <p className="mt-3 text-base leading-relaxed text-white/70">{SLIDES[activeIndex].description}</p>
+                    </div>
+                    <ul className="space-y-3 text-sm text-white/70">
+                      {SLIDES[activeIndex].highlights.map(item => (
                         <li key={item} className="flex items-center gap-2">
                           <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-oa-red/30 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-white">
                             →
@@ -147,7 +149,9 @@ export default function DemoSlider() {
         <div className="mt-6">
           <div className="flex items-center justify-between text-[0.68rem] uppercase tracking-[0.36em] text-white/60">
             <span>{SLIDES[activeIndex].title}</span>
-            <span>{activeIndex + 1} / {SLIDES.length}</span>
+            <span>
+              {activeIndex + 1} / {SLIDES.length}
+            </span>
           </div>
           <div className="mt-2 h-1 rounded-full bg-white/10">
             <motion.div

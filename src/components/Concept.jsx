@@ -36,12 +36,16 @@ export default function Concept() {
           <p className="mt-5 text-lg leading-relaxed text-oa-ink/80">
             Cada cápsula sintetiza datos, visión y propuesta de valor en un formato interactivo que inspira confianza y acción.
           </p>
-          <div className="mt-6 space-y-3 text-sm leading-relaxed text-oa-ink/65">
-            <p className="uppercase tracking-[0.22em] text-oa-ink/50">Highlights</p>
-            <p>• Storytelling de 2 minutos con foco en decisiones.</p>
-            <p>• Integración con CRM y seguimiento de comportamiento.</p>
-            <p>• Assets editables para equipos de ventas y marketing.</p>
-          </div>
+          <dl className="mt-6 space-y-4 text-sm leading-relaxed text-oa-ink/70">
+            <div>
+              <dt className="text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-oa-ink/45">Highlights</dt>
+              <dd className="mt-2 space-y-2">
+                <p>Storytelling de 2 minutos con foco en decisiones.</p>
+                <p>Integración con CRM y seguimiento de comportamiento.</p>
+                <p>Assets editables para equipos de ventas y marketing.</p>
+              </dd>
+            </div>
+          </dl>
         </motion.div>
         <div className="grid flex-1 gap-6 md:grid-cols-2">
           {PILLARS.map((pillar, index) => (

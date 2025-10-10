@@ -1,9 +1,11 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { navLinks as defaultNavLinks } from '../config/navLinks'
 
 export default function MobileMenu({ links = [] }) {
   const [open, setOpen] = useState(false)
   const menuId = useId()
   const panelRef = useRef(null)
+  const resolvedLinks = links.length ? links : defaultNavLinks
 
   useEffect(() => {
     if (!open) {
@@ -68,10 +70,10 @@ export default function MobileMenu({ links = [] }) {
           className={`absolute inset-y-0 right-0 flex h-full w-full max-w-xs flex-col gap-8 bg-white/95 px-7 pb-12 pt-20 text-oa-ink shadow-xl backdrop-blur transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <div className="space-y-3 text-[0.72rem] uppercase tracking-[0.36em] text-oa-ink/50">
-            <span>Menú</span>
+            <span id={`${menuId}-label`}>Menú</span>
           </div>
-          <nav className="space-y-2 text-sm font-semibold">
-            {links.map(link => (
+          <nav className="space-y-2 text-sm font-semibold" aria-labelledby={`${menuId}-label`}>
+            {resolvedLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
