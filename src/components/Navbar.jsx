@@ -1,37 +1,26 @@
 import LogoOA from './LogoOA'
-import MobileMenu from './MobileMenu'
-
-export const links = [
-  { href: '#que-es', label: 'Qué es' },
-  { href: '#proposito', label: 'Filosofía' },
-  { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#resultados', label: 'Resultados' },
-  { href: '#demo', label: 'Demo' },
-  { href: '#demo-contacto', label: 'Contacto' },
-  { href: '/pauta', label: 'Pauta' }
-]
+import { navLinks } from '../config/navLinks'
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-oa-gray/30 bg-white/80 backdrop-blur-xl">
-      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="#hero" className="flex items-center gap-2">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <a href="/#hero" className="flex items-center gap-2 text-oa-ink">
           <LogoOA className="h-7 w-auto" />
-          <span className="sr-only">Observauto</span>
+          <span className="sr-only">Observauto Awareness</span>
         </a>
-        <ul className="hidden items-center gap-6 text-oa-ink md:flex">
-          {links.map(l => (
-            <li key={l.href}>
+        <ul className="hidden items-center gap-6 md:flex">
+          {navLinks.map(link => (
+            <li key={link.href}>
               <a
-                href={l.href}
-                className="rounded-pill px-3 py-1.5 transition-all duration-200 hover:bg-oa-gray/30 hover:text-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
+                href={link.href}
+                className="rounded-full px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-oa-ink/80 transition-colors duration-200 hover:bg-gray-100 hover:text-[#D70102] focus:outline-none focus:ring-2 focus:ring-[#D70102]/60"
               >
-                {l.label}
+                {link.label}
               </a>
             </li>
           ))}
         </ul>
-        <MobileMenu />
       </nav>
     </header>
   )
