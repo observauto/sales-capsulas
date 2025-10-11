@@ -58,7 +58,7 @@ Próximo paso: Healthcheck /dev/network
 
 👤 Autoría
 Desarrollado por ObservAuto
-Dirección creativa y técnica: Felipe Garan
+Dirección creativa y técnica: Felipe Andrés García Andrade (Felipe Garan)
 © ObservAuto 2025
 
 pgsql
