@@ -1,11 +1,7 @@
 // Cliente de fetch con timeout y fallback opcional a proxy.
-// FIX definitivo: en CUALQUIER reintento (403 o timeout) se usa SIEMPRE un AbortController NUEVO.
-// Jamás se reutiliza un signal abortado. Evita AbortError inmediato en el retry.
-//
-// Cómo habilitar proxy (opcional):
-//  - Definir VITE_HTTP_PROXY_ENABLED="true"
-//  - Implementar un endpoint /api/proxy que reenvíe la solicitud.
-//  - Si no existe /api/proxy, dejar PROXY_ENABLED en false (o no poner la env) y el build no falla.
+// FIX definitivo: en reintentos (403 o timeout) se usa SIEMPRE un AbortController NUEVO.
+// Además, exponemos installFetchInterceptor() para que main.jsx pueda interceptar window.fetch
+// y enrutarlo a fetchClient(). Si no hay window (SSR/build), no hace nada.
 
 const DEFAULT_TIMEOUT = 10000; // 10s
 
@@ -85,7 +81,31 @@ async function executeWithFallback(originalFetch, input, init = {}) {
   }
 }
 
-// API pública
+// API pública: cliente directo
 export async function fetchClient(input, init = {}) {
   return executeWithFallback(fetch, input, init);
+}
+
+// API pública: interceptor global opcional
+// Reemplaza window.fetch por una función que usa fetchClient().
+// Es idempotente: si ya se instaló, no lo vuelve a instalar.
+// En SSR/build (sin window) no hace nada.
+export function installFetchInterceptor() {
+  if (typeof window === "undefined" || typeof window.fetch !== "function") return;
+
+  // Evitar múltiples instalaciones
+  if (window.__oa_fetch_interceptor_installed) return;
+
+  const originalFetch = window.fetch.bind(window);
+  window.__oa_original_fetch = originalFetch;
+
+  window.fetch = (input, init) => {
+    // Delegamos al fetchClient con el fetch global actual (que puede ser proxied por el runtime)
+    return fetchClient(input, init);
+  };
+
+  window.__oa_fetch_interceptor_installed = true;
+  try {
+    console.info("[fetchClient] Interceptor instalado sobre window.fetch");
+  } catch (_) {}
 }
