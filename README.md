@@ -1,28 +1,67 @@
 # ObservAuto Awareness
 
-**Experiencia digital respaldada por datos** diseñada para presentar el valor comercial y narrativo de las cápsulas ObservAuto.
+**Elevator pitch digital respaldado por datos**, diseñado para presentar y vender los espacios comerciales de *Cápsulas ObservAuto*.
+
+---
 
 ## 🚀 Descripción
-Awareness es una Single Page Application creada con React, Vite y Tailwind CSS. Su objetivo es comunicar métricas, casos de uso y capacidades de ObservAuto con una narrativa visual consistente.
+**Awareness** es una aplicación ligera desarrollada con **React + Vite**, pensada como una pieza de comunicación ejecutiva y visual.  
+Su propósito es mostrar, con claridad y datos, el valor comercial de las *Cápsulas ObservAuto* ante marcas, agencias y aliados.
 
-## 🧩 Estructura del proyecto
-- `src/components/` → Componentes de interfaz (Navbar, Hero, CTA, Footer, etc.).
-- `src/config/` → Configuración compartida como la lista de navegación.
-- `src/lib/` → Utilidades y wrappers, incluyendo `fetcher.js` con manejo de respuestas 403.
-- `src/styles/` → Tokens de diseño y estilos globales.
-- `public/` → Activos estáticos.
-- `vercel.json` → Configuración de headers de seguridad y redirect `/stats`.
+Este proyecto funciona como un micrositio tipo **elevator pitch digital**, optimizado para escritorio y móvil, desplegado mediante **Vercel**.
 
-## ⚙️ Scripts
+---
+
+## 🧩 Estructura del Proyecto
+/src
+├── components/ # Navbar, Hero, Concept, Footer, etc.
+├── config/ # Configuración de navegación
+├── lib/ # Utilidades (incluye fetcher.js con manejo anti-403)
+├── styles/ # Tokens y estilos globales
+└── App.jsx # Punto de entrada principal
+vercel.json # Configuración de headers y redirect /stats
+
+yaml
+Copiar código
+
+---
+
+## ⚙️ Scripts de Ejecución
+Instalar dependencias:
 ```bash
 npm install
-npm run dev
-npm run build
-npm run preview
-```
+Entorno de desarrollo:
 
-## 🌐 Deploy
+bash
+Copiar código
+npm run dev
+Build de producción:
+
+bash
+Copiar código
+npm run build
+🌐 Deploy
 Producción: https://sales-capsulas.vercel.app
 
-## 👤 Autoría
-Desarrollado por ObservAuto — estrategia, comunicación y tecnología para la industria automotriz.
+Cada actualización en la rama main genera un deploy automático en Vercel.
+
+🧭 Estado Actual
+Código base limpio y funcional
+
+Sin Access Gate
+
+Headers de seguridad activos (vercel.json)
+
+Wrapper fetcher.js con manejo de errores 403 implementado
+
+Panel DEV opcional (DevNetworkPanel) para ver eventos [OA-403] (no se renderiza en producción)
+
+🔧 Variables de entorno relevantes
+VITE_SITE_URL → URL pública del sitio (ej.: https://sales-capsulas.vercel.app) para construir URLs absolutas en producción.
+
+(Opcional) VITE_HTTP_PROXY_ENABLED → "true" para habilitar reintentos vía proxy en fetchClient cuando corresponda.
+
+👤 Autoría
+Desarrollado por ObservAuto
+Dirección creativa y técnica: Felipe Garan
+© ObservAuto 2025

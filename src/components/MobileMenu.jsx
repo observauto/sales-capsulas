@@ -1,55 +1,116 @@
-import { useState } from 'react'
-import { links } from './Navbar'
+import { useEffect, useId, useRef, useState } from 'react'
+import { navLinks as defaultNavLinks } from '../config/navLinks'
 
-export default function MobileMenu() {
+export default function MobileMenu({ links = defaultNavLinks, triggerClassName = 'md:hidden' }) {
   const [open, setOpen] = useState(false)
+  const menuId = useId()
+  const panelRef = useRef(null)
+
+  useEffect(() => {
+    if (!open) {
+      document.body.style.removeProperty('overflow')
+      return
+    }
+
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    panelRef.current?.focus()
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [open])
 
   const toggleMenu = () => setOpen(prev => !prev)
   const closeMenu = () => setOpen(false)
 
   return (
-    <div className="md:hidden">
+    <div className={`fixed right-4 top-3 z-50 ${triggerClassName}`}>
       <button
         type="button"
         onClick={toggleMenu}
-        className="inline-flex items-center gap-2 rounded-pill border border-oa-gray/40 px-3 py-1.5 text-sm font-semibold text-oa-ink shadow-soft hover:border-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white/95 text-oa-ink shadow-soft transition focus:outline-none focus:ring-2 focus:ring-[#D70102]/60"
         aria-expanded={open}
-        aria-controls="mobile-nav"
+        aria-controls={menuId}
+        aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+        aria-haspopup="true"
       >
-        <span>{open ? 'Cerrar' : 'Menú'}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.5"
-          className="h-4 w-4"
-          aria-hidden="true"
+          strokeWidth="1.6"
+          className="h-6 w-6 transition-transform duration-200"
         >
           {open ? (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h16" />
           )}
         </svg>
       </button>
-      {open && (
-        <div id="mobile-nav" className="absolute right-4 top-14 w-48 rounded-2xl border border-oa-gray/40 bg-white p-3 shadow-lg">
-          <ul className="flex flex-col gap-2 text-sm text-oa-ink">
+
+      <div
+        className={`fixed inset-0 z-40 transition-opacity duration-200 ${open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
+        aria-hidden={!open}
+      >
+        <div
+          className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0'}`}
+          aria-hidden="true"
+          onClick={closeMenu}
+        />
+        <div
+          id={menuId}
+          role="dialog"
+          aria-modal="true"
+          ref={panelRef}
+          tabIndex={-1}
+          className={`absolute inset-y-0 right-0 flex h-full w-full max-w-xs flex-col gap-8 bg-white/95 px-7 pb-12 pt-20 text-oa-ink shadow-xl backdrop-blur-sm transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          <div className="space-y-3 text-[0.72rem] uppercase tracking-[0.36em] text-oa-ink/50">
+            <span id={`${menuId}-label`}>Menú</span>
+          </div>
+          <nav className="space-y-2 text-sm font-semibold" aria-labelledby={`${menuId}-label`}>
             {links.map(link => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="block rounded-xl px-3 py-2 hover:bg-oa-gray/20 hover:text-oa-red focus:outline-none focus:ring-2 focus:ring-oa-red"
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="flex items-center justify-between rounded-2xl px-4 py-3 text-xs uppercase tracking-[0.24em] text-oa-ink/80 transition-colors duration-200 hover:bg-gray-100 hover:text-[#D70102]"
+              >
+                <span>{link.label}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="h-4 w-4"
                 >
-                  {link.label}
-                </a>
-              </li>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
+                </svg>
+              </a>
             ))}
-          </ul>
+          </nav>
+
+          <button
+            type="button"
+            onClick={closeMenu}
+            className="mt-auto rounded-full border border-gray-200 px-4 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-oa-ink transition-colors duration-200 hover:border-[#D70102] hover:text-[#D70102]"
+          >
+            Cerrar menú
+          </button>
         </div>
-      )}
+      </div>
     </div>
   )
 }

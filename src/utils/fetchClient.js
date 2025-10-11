@@ -1,79 +1,107 @@
-const PROXY_URL = import.meta.env.VITE_HTTP_PROXY_URL?.trim()
-const PROXY_ENABLED = import.meta.env.VITE_HTTP_PROXY_ENABLED === 'true'
-const RETRY_ON_403 = import.meta.env.VITE_HTTP_RETRY_ON_403 !== 'false'
-const DEFAULT_TIMEOUT = Number(import.meta.env.VITE_HTTP_TIMEOUT ?? 15000)
+// Cliente avanzado con timeout y fallback opcional a proxy.
+// FIX aplicado: en reintentos, usamos un AbortController NUEVO (no se reutiliza un signal abortado).
 
+const DEFAULT_TIMEOUT = 10000; // 10s
+const PROXY_ENABLED =
+  (typeof import.meta !== "undefined" &&
+    import.meta.env &&
+    import.meta.env.VITE_HTTP_PROXY_ENABLED === "true") || false;
+
+const RETRY_ON_403 = true;
+
+// Ajusta esta función según tu infraestructura de proxy.
 function buildProxiedRequest(input) {
-  if (!PROXY_URL) {
-    return null
-  }
-
   try {
-    const url = typeof input === 'string' ? input : input.url
-    const encoded = encodeURIComponent(url)
-    return `${PROXY_URL}${PROXY_URL.includes('?') ? '&' : '?'}url=${encoded}`
-  } catch (error) {
-    console.warn('[fetchClient] No se pudo construir la URL proxificada', error)
-    return null
+    const url = typeof input === "string" ? input : input?.url;
+    if (!url) return null;
+    const encoded = encodeURIComponent(url);
+    // Ejemplo: endpoint de proxy interno
+    return `/api/proxy?url=${encoded}`;
+  } catch {
+    return null;
   }
 }
 
-async function performFetch(originalFetch, input, init, signal) {
-  const mergedInit = { ...init, signal }
-  return originalFetch(input, mergedInit)
+async function performFetch(originalFetch, input, init = {}, signal) {
+  const opts = { ...init };
+  if (signal) opts.signal = signal;
+  return originalFetch(input, opts);
 }
 
 async function executeWithFallback(originalFetch, input, init = {}) {
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT)
+  // 1) Petición primaria con timeout propio
+  const primaryController = new AbortController();
+  const timeoutId = setTimeout(() => primaryController.abort(), DEFAULT_TIMEOUT);
 
   try {
-    const response = await performFetch(originalFetch, input, init, controller.signal)
+    const res = await performFetch(
+      originalFetch,
+      input,
+      init,
+      primaryController.signal
+    );
 
-    if (response.status === 403 && PROXY_ENABLED && RETRY_ON_403) {
-      const proxied = buildProxiedRequest(response.url || input)
+    // 2) Reintento por 403 vía proxy (si habilitado)
+    if (res.status === 403 && PROXY_ENABLED && RETRY_ON_403) {
+      const proxied = buildProxiedRequest(res.url || input);
       if (proxied) {
-        console.warn('[fetchClient] Reintentando solicitud a través de proxy por 403')
-        return await performFetch(originalFetch, proxied, init, controller.signal)
+        console.warn("[fetchClient] Reintentando vía proxy por 403 →", proxied);
+        // NUEVO controller para el reintento
+        const retryController = new AbortController();
+        const retryTimeout = setTimeout(
+          () => retryController.abort(),
+          DEFAULT_TIMEOUT
+        );
+        try {
+          const retryRes = await performFetch(
+            originalFetch,
+            proxied,
+            init,
+            retryController.signal
+          );
+          clearTimeout(retryTimeout);
+          return retryRes;
+        } catch (retryErr) {
+          clearTimeout(retryTimeout);
+          throw retryErr;
+        }
       }
     }
 
-    return response
-  } catch (error) {
+    return res;
+  } catch (err) {
+    // 3) Fallback ante error de red/timeout → proxy si está habilitado
     if (PROXY_ENABLED) {
-      const proxied = buildProxiedRequest(input)
+      const proxied = buildProxiedRequest(input);
       if (proxied) {
-        console.warn('[fetchClient] Error de red, intentando con proxy', error)
-        return performFetch(originalFetch, proxied, init, controller.signal)
+        console.warn("[fetchClient] Error de red, intentando con proxy", err);
+        // NUEVO controller para el reintento
+        const retryController = new AbortController();
+        const retryTimeout = setTimeout(
+          () => retryController.abort(),
+          DEFAULT_TIMEOUT
+        );
+        try {
+          const retryRes = await performFetch(
+            originalFetch,
+            proxied,
+            init,
+            retryController.signal
+          );
+          clearTimeout(retryTimeout);
+          return retryRes;
+        } catch (retryErr) {
+          clearTimeout(retryTimeout);
+          throw retryErr;
+        }
       }
     }
-    throw error
+    throw err;
   } finally {
-    clearTimeout(timeoutId)
+    clearTimeout(timeoutId);
   }
 }
 
-export function installFetchInterceptor() {
-  if (typeof window === 'undefined' || typeof window.fetch !== 'function') {
-    return
-  }
-
-  if (window.__observautoFetchInstalled) {
-    return
-  }
-
-  const originalFetch = window.fetch.bind(window)
-
-  window.fetch = (input, init) => executeWithFallback(originalFetch, input, init)
-
-  window.__observautoFetchInstalled = true
-}
-
-export async function fetchWithFallback(input, init) {
-  if (typeof window !== 'undefined' && window.fetch === fetchWithFallback) {
-    // Avoid infinite recursion when the interceptor hasn't been installed properly.
-    return executeWithFallback(window.fetch, input, init)
-  }
-
-  return executeWithFallback(fetch, input, init)
+export async function fetchClient(input, init = {}) {
+  return executeWithFallback(fetch, input, init);
 }
