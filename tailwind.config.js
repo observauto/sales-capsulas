@@ -9,7 +9,8 @@ export default {
           red:  '#D70102',
           gray: '#EAEAEA',
           ink:  '#1A1A1A',
-          white:'#FFFFFF'
+          white:'#FFFFFF',
+          green:'#25D366'
         }
       },
       borderRadius: {
