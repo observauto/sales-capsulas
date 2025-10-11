@@ -1,5 +1,5 @@
 // Cliente de fetch con timeout y fallback opcional a proxy.
-// FIX definitivo: en reintentos (403 o timeout) se usa SIEMPRE un AbortController NUEVO.
+// FIX definitivo: en CUALQUIER reintento (403 o timeout) se usa SIEMPRE un AbortController NUEVO.
 // Además, exponemos installFetchInterceptor() para que main.jsx pueda interceptar window.fetch
 // y enrutarlo a fetchClient(). Si no hay window (SSR/build), no hace nada.
 
@@ -100,7 +100,6 @@ export function installFetchInterceptor() {
   window.__oa_original_fetch = originalFetch;
 
   window.fetch = (input, init) => {
-    // Delegamos al fetchClient con el fetch global actual (que puede ser proxied por el runtime)
     return fetchClient(input, init);
   };
 
