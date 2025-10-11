@@ -9,7 +9,7 @@ export default function Navbar() {
           ObservAuto • Awareness
         </a>
         <nav className="flex items-center gap-2">
-          {navLinks.slice(0, 2).map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.path}
               href={link.path}
@@ -20,7 +20,6 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* Acciones rápidas en móvil/desktop (sin dependencias de iconos) */}
           <button
             type="button"
             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
@@ -29,26 +28,30 @@ export default function Navbar() {
           >
             <span>♥</span><span className="hidden sm:inline">Favoritos</span>
           </button>
+
           <button
             type="button"
             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
             aria-label="Compartir"
             title="Compartir"
             onClick={() => {
+              const url = window.location.href;
+              const data = {
+                title: "ObservAuto Awareness",
+                text: "Elevator pitch digital respaldado por datos.",
+                url
+              };
               if (navigator.share) {
-                navigator.share({
-                  title: "ObservAuto Awareness",
-                  text: "Elevator pitch digital respaldado por datos",
-                  url: window.location.href,
-                });
+                navigator.share(data).catch(() => navigator.clipboard.writeText(url));
               } else {
-                navigator.clipboard.writeText(window.location.href);
+                navigator.clipboard.writeText(url);
                 alert("Enlace copiado al portapapeles");
               }
             }}
           >
             <span>🔗</span><span className="hidden sm:inline">Compartir</span>
           </button>
+
           <button
             type="button"
             className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"

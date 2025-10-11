@@ -14,7 +14,7 @@ export default function CTA() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="mailto:hola@observauto.com?subject=Interés%20en%20Cápsulas%20ObservAuto"
+              href="mailto:hola@observauto.com?subject=Inter%C3%A9s%20en%20C%C3%A1psulas%20ObservAuto"
               className="inline-flex items-center rounded-xl border px-4 py-2 hover:bg-gray-50"
             >
               Escribir a ObservAuto

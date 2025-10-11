@@ -2,9 +2,9 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Concept from "./components/Concept";
-import CTA from "./components/CTA";
-import Philosophy from "./components/Philosophy";
 import ResultsDashboard from "./components/ResultsDashboard";
+import Philosophy from "./components/Philosophy";
+import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function FloatingWhatsApp() {
-  // Puedes configurar tu enlace real de WhatsApp:
   const wa = "https://wa.me/573000000000?text=Hola%20ObservAuto%2C%20quiero%20saber%20m%C3%A1s%20de%20C%C3%A1psulas";
   return (
     <a
