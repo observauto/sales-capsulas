@@ -11,7 +11,7 @@
 
 ## 🧩 Estructura del Proyecto
 /src
-├── components/ # Navbar, Hero, Concept, Footer, etc.
+├── components/ # Navbar, Hero, Concept, ResultsDashboard, CTA, Footer, etc.
 ├── config/ # Navegación (navLinks.js)
 ├── lib/ # Utilidades (incluye fetcher.js con logging 403)
 ├── styles/ # Tokens y estilos globales
@@ -33,7 +33,7 @@ Producción: https://sales-capsulas.vercel.app
 Cada push a main dispara deploy en Vercel.
 
 🔧 Variables de entorno
-VITE_SITE_URL → URL pública del sitio (p. ej., https://sales-capsulas.vercel.app) para construir URLs absolutas.
+VITE_SITE_URL → URL pública del sitio (p. ej., https://sales-capsulas.vercel.app) para construir URLs absolutas en producción.
 
 (Opcional) VITE_HTTP_PROXY_ENABLED → "true" para habilitar reintento por proxy en fetchClient cuando exista /api/proxy.
 
@@ -44,13 +44,8 @@ vercel.json con headers de seguridad
 
 fetcher.js con logging de 403 y buffer window.__oa403
 
-Panel DEV opcional (si fue agregado) para inspección de [OA-403] en desarrollo
+(Opcional) DevNetworkPanel para inspección de [OA-403] en desarrollo
 
 👤 Autoría
 Desarrollado por ObservAuto — Dirección creativa y técnica: Felipe Garan
 © ObservAuto 2025
-
-csharp
-Copiar código
-
----

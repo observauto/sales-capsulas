@@ -1,5 +1,6 @@
 // Cliente avanzado con timeout y fallback opcional a proxy.
-// FIX: en reintentos usamos un AbortController NUEVO (no se reutiliza un signal abortado).
+// FIX definitivo: en reintentos (403 o timeout) se usa SIEMPRE un AbortController NUEVO.
+// Nunca se reutiliza un signal ya abortado (evita el bug marcado por el bot de Codex).
 
 const DEFAULT_TIMEOUT = 10000; // 10s
 const PROXY_ENABLED =
@@ -74,6 +75,7 @@ async function executeWithFallback(originalFetch, input, init = {}) {
       const proxied = buildProxiedRequest(input);
       if (proxied) {
         console.warn("[fetchClient] Error de red, intentando con proxy", err);
+        // NUEVO controller para el reintento (no reutilizar el abortado)
         const retryController = new AbortController();
         const retryTimeout = setTimeout(
           () => retryController.abort(),
