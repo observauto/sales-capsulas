@@ -29,12 +29,12 @@ export default function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-[0.32em] text-gray-900">Producto</h3>
             <ul className="mt-4 space-y-2 text-sm uppercase tracking-[0.26em] text-gray-600">
               <li>
-                <a href="#como-funciona" className="rounded-full px-2 py-1 transition hover:bg-gray-100 hover:text-[#D70102]">
+                <a href="/#como-funciona" className="rounded-full px-2 py-1 transition hover:bg-gray-100 hover:text-[#D70102]">
                   Cómo funciona
                 </a>
               </li>
               <li>
-                <a href="#resultados" className="rounded-full px-2 py-1 transition hover:bg-gray-100 hover:text-[#D70102]">
+                <a href="/#resultados" className="rounded-full px-2 py-1 transition hover:bg-gray-100 hover:text-[#D70102]">
                   Resultados
                 </a>
               </li>

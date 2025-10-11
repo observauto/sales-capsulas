@@ -20,10 +20,10 @@ export default function Hero() {
           Una Cápsula Observauto transforma información en influencia de marca.
         </h2>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="#demo" className="inline-flex items-center justify-center rounded-pill bg-white text-oa-blue px-6 py-3 font-semibold shadow-soft hover:scale-[1.02] transition">
+          <a href="/#demo" className="inline-flex items-center justify-center rounded-pill bg-white text-oa-blue px-6 py-3 font-semibold shadow-soft hover:scale-[1.02] transition">
             Ver demo
           </a>
-          <a href="#como-funciona" className="inline-flex items-center justify-center rounded-pill border border-white/70 px-6 py-3 font-semibold hover:bg-white/10 transition">
+          <a href="/#como-funciona" className="inline-flex items-center justify-center rounded-pill border border-white/70 px-6 py-3 font-semibold hover:bg-white/10 transition">
             Cómo funciona
           </a>
         </div>
