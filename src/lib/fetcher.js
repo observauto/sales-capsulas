@@ -1,5 +1,5 @@
 // Wrapper ligero para unificar fetch y registrar 403.
-// Mantiene un buffer circular (máx 50) en window.__oa403 para diagnóstico (DevNetworkPanel).
+// Mantiene un buffer circular (máx 50) en window.__oa403 para diagnóstico.
 
 (function initOA403Buffer() {
   if (typeof window !== "undefined") {

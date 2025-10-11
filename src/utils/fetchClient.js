@@ -1,5 +1,5 @@
 // Cliente avanzado con timeout y fallback opcional a proxy.
-// FIX aplicado: en reintentos, usamos un AbortController NUEVO (no se reutiliza un signal abortado).
+// FIX: en reintentos usamos un AbortController NUEVO (no se reutiliza un signal abortado).
 
 const DEFAULT_TIMEOUT = 10000; // 10s
 const PROXY_ENABLED =
@@ -9,13 +9,12 @@ const PROXY_ENABLED =
 
 const RETRY_ON_403 = true;
 
-// Ajusta esta función según tu infraestructura de proxy.
+// Ajusta esta función según tu infraestructura de proxy (requiere endpoint /api/proxy).
 function buildProxiedRequest(input) {
   try {
     const url = typeof input === "string" ? input : input?.url;
     if (!url) return null;
     const encoded = encodeURIComponent(url);
-    // Ejemplo: endpoint de proxy interno
     return `/api/proxy?url=${encoded}`;
   } catch {
     return null;
@@ -75,7 +74,6 @@ async function executeWithFallback(originalFetch, input, init = {}) {
       const proxied = buildProxiedRequest(input);
       if (proxied) {
         console.warn("[fetchClient] Error de red, intentando con proxy", err);
-        // NUEVO controller para el reintento
         const retryController = new AbortController();
         const retryTimeout = setTimeout(
           () => retryController.abort(),
