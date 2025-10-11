@@ -1,24 +1,28 @@
-# Observauto Cápsulas · SPA
-SPA creada con **React + Vite + Tailwind + Framer Motion** siguiendo identidad Observauto.
+# ObservAuto Awareness
 
-## Scripts
-- `npm i`
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
+**Experiencia digital respaldada por datos** diseñada para presentar el valor comercial y narrativo de las cápsulas ObservAuto.
 
-## Deploy en Vercel
-1. Crea un repo en GitHub y sube este proyecto.
-2. En Vercel: **New Project** → importa el repo.
-3. Framework preset: **Vite**.
-4. Root: `/` (por defecto), comando build `npm run build`, output `dist/`.
-5. Deploy. Listo.
+## 🚀 Descripción
+Awareness es una Single Page Application creada con React, Vite y Tailwind CSS. Su objetivo es comunicar métricas, casos de uso y capacidades de ObservAuto con una narrativa visual consistente.
 
-## Variables de entorno
-- `VITE_HTTP_PROXY_ENABLED`: (`true`/`false`) activa el fallback de proxy.
-- `VITE_HTTP_PROXY_URL`: endpoint del proxy para solicitudes externas.
-- `VITE_HTTP_RETRY_ON_403`: controla si se reintenta al recibir un 403 (por defecto `true`).
-- `VITE_HTTP_TIMEOUT`: timeout en ms para las solicitudes (por defecto `15000`).
-- `VITE_SITE_URL`: dominio base utilizado por el wrapper `fetcher` para construir rutas relativas en producción (ej. `https://sales-capsulas.vercel.app`).
+## 🧩 Estructura del proyecto
+- `src/components/` → Componentes de interfaz (Navbar, Hero, CTA, Footer, etc.).
+- `src/config/` → Configuración compartida como la lista de navegación.
+- `src/lib/` → Utilidades y wrappers, incluyendo `fetcher.js` con manejo de respuestas 403.
+- `src/styles/` → Tokens de diseño y estilos globales.
+- `public/` → Activos estáticos.
+- `vercel.json` → Configuración de headers de seguridad y redirect `/stats`.
 
-_Construido: 2025-10-08T23:16:35.655884_
+## ⚙️ Scripts
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
+
+## 🌐 Deploy
+Producción: https://sales-capsulas.vercel.app
+
+## 👤 Autoría
+Desarrollado por ObservAuto — estrategia, comunicación y tecnología para la industria automotriz.
