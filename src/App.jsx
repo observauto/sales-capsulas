@@ -1,40 +1,29 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Steps from './components/Steps'
-import Metrics from './components/Metrics'
-import CTA from './components/CTA'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Concept from "./components/Concept";
+import ResultsDashboard from "./components/ResultsDashboard";
+import Philosophy from "./components/Philosophy";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import DevNetworkPanel from "./components/DevNetworkPanel";
 
 export default function App() {
   return (
-    <div className="text-oa-ink">
+    <div className="min-h-screen bg-white text-gray-900">
       <Navbar />
       <main>
         <Hero />
-        <section id="que-es" className="bg-white py-16">
-          <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-3xl font-extrabold text-oa-blue">Qué es</h2>
-            <p className="mt-4 text-lg text-oa-ink/90">
-              Más que contenido, es educación, posicionamiento y conversión para marcas que lideran desde el conocimiento.
-            </p>
-          </div>
-        </section>
-        <section id="proposito" className="bg-oa-blue text-white py-16">
-          <div className="mx-auto max-w-5xl px-6">
-            <h2 className="text-3xl font-extrabold">Propósito</h2>
-            <p className="mt-4 text-xl font-semibold">“Una cápsula no vende un producto, construye autoridad.”</p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              <li>• Aumenta awareness</li>
-              <li>• Apoya ventas</li>
-              <li>• Refuerza postventa</li>
-              <li>• Mejora brand recall</li>
-            </ul>
-          </div>
-        </section>
-        <Steps />
-        <Metrics />
+        <Concept />
+        <ResultsDashboard />
+        <Philosophy />
         <CTA />
       </main>
-      <footer className="bg-oa-ink text-oa-gray py-8 text-center text-sm">© {new Date().getFullYear()} Observauto</footer>
+      <Footer />
+      <FloatingWhatsApp />
+      {/* El panel solo se renderiza en desarrollo; en producción retorna null */}
+      <DevNetworkPanel />
     </div>
-  )
+  );
 }
