@@ -1,37 +1,68 @@
-import LogoOA from './LogoOA'
-import MobileMenu from './MobileMenu'
-
-export const links = [
-  { href: "#que-es", label: "Qué es" },
-  { href: "#proposito", label: "Propósito" },
-  { href: "#como-funciona", label: "Cómo funciona" },
-  { href: "#resultados", label: "Resultados" },
-  { href: "#demo-contacto", label: "Demo" },
-  { href: "/pauta", label: "Pauta" },
-]
+import React from "react";
+import navLinks from "../config/navLinks";
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/85 border-b border-oa-gray/30 shadow-sm">
-      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="#hero" className="flex items-center gap-2">
-          <LogoOA className="h-7 w-auto" />
-          <span className="sr-only">Observauto</span>
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <a href="/" className="font-semibold tracking-tight">
+          ObservAuto • Awareness
         </a>
-        <ul className="hidden md:flex items-center gap-6 text-oa-ink">
-          {links.map(l => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="hover:text-oa-red hover:bg-oa-gray/30 px-3 py-1.5 rounded-pill transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-oa-red"
-              >
-                {l.label}
-              </a>
-            </li>
+        <nav className="flex items-center gap-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.path}
+              href={link.path}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            >
+              <span className="hidden sm:inline">{link.label}</span>
+              <span className="sm:hidden" aria-hidden="true">•</span>
+            </a>
           ))}
-        </ul>
-        <MobileMenu />
-      </nav>
+
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Favoritos"
+            title="Favoritos"
+          >
+            <span>♥</span><span className="hidden sm:inline">Favoritos</span>
+          </button>
+
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Compartir"
+            title="Compartir"
+            onClick={() => {
+              const url = window.location.href;
+              const data = {
+                title: "ObservAuto Awareness",
+                text: "Elevator pitch digital respaldado por datos.",
+                url
+              };
+              if (navigator.share) {
+                navigator.share(data).catch(() => navigator.clipboard.writeText(url));
+              } else {
+                navigator.clipboard.writeText(url);
+                alert("Enlace copiado al portapapeles");
+              }
+            }}
+          >
+            <span>🔗</span><span className="hidden sm:inline">Compartir</span>
+          </button>
+
+          <button
+            type="button"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            aria-label="Cambiar tema"
+            title="Cambiar tema"
+            onClick={() => document.documentElement.classList.toggle("dark")}
+          >
+            <span>🌓</span><span className="hidden sm:inline">Tema</span>
+          </button>
+        </nav>
+      </div>
     </header>
-  )
+  );
 }
