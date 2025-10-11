@@ -54,35 +54,14 @@ Headers de seguridad activos (vercel.json)
 
 Wrapper fetcher.js con manejo de errores 403 implementado
 
-Próximo paso: Healthcheck /dev/network
+Panel DEV opcional (DevNetworkPanel) para ver eventos [OA-403] (no se renderiza en producción)
+
+🔧 Variables de entorno relevantes
+VITE_SITE_URL → URL pública del sitio (ej.: https://sales-capsulas.vercel.app) para construir URLs absolutas en producción.
+
+(Opcional) VITE_HTTP_PROXY_ENABLED → "true" para habilitar reintentos vía proxy en fetchClient cuando corresponda.
 
 👤 Autoría
 Desarrollado por ObservAuto
-Dirección creativa y técnica: Felipe Andrés García Andrade (Felipe Garan)
+Dirección creativa y técnica: Felipe Garan
 © ObservAuto 2025
-
-pgsql
-Copiar código
-
----
-
---- Archivo: vercel.json
-```json
-{
-  "version": 2,
-  "public": true,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
-      ]
-    }
-  ],
-  "redirects": [
-    { "source": "/stats", "destination": "https://stats.observauto.com", "permanent": false }
-  ]
-}

@@ -1,5 +1,5 @@
 // Wrapper ligero para unificar fetch y registrar 403.
-// Además, guarda los últimos 50 eventos en window.__oa403 para diagnóstico.
+// Mantiene un buffer circular (máx 50) en window.__oa403 para diagnóstico (DevNetworkPanel).
 
 (function initOA403Buffer() {
   if (typeof window !== "undefined") {
@@ -7,9 +7,7 @@
     window.__oa403_push = function (evt) {
       try {
         window.__oa403.push(evt);
-        if (window.__oa403.length > 50) {
-          window.__oa403.shift();
-        }
+        if (window.__oa403.length > 50) window.__oa403.shift();
       } catch (_) {}
     };
   }
@@ -47,7 +45,6 @@ export async function fetcher(path, options = {}) {
       if (typeof window !== "undefined" && window.__oa403_push) {
         window.__oa403_push(evt);
       }
-      // Visibilidad en consola
       console.warn("[OA-403]", evt);
     }
 
