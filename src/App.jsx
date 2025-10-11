@@ -7,6 +7,7 @@ import Philosophy from "./components/Philosophy";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import DevNetworkPanel from "./components/DevNetworkPanel";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      {/* El panel solo se renderiza en desarrollo; en producción retorna null */}
+      <DevNetworkPanel />
     </div>
   );
 }
