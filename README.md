@@ -1,23 +1,88 @@
-# Observauto Cápsulas · SPA
-SPA creada con **React + Vite + Tailwind + Framer Motion** siguiendo identidad Observauto.
+# ObservAuto Awareness
 
-## Scripts
-- `npm i`
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
+**Elevator pitch digital respaldado por datos**, diseñado para presentar y vender los espacios comerciales de *Cápsulas ObservAuto*.
 
-## Deploy en Vercel
-1. Crea un repo en GitHub y sube este proyecto.
-2. En Vercel: **New Project** → importa el repo.
-3. Framework preset: **Vite**.
-4. Root: `/` (por defecto), comando build `npm run build`, output `dist/`.
-5. Deploy. Listo.
+---
 
-## Variables de entorno
-- `VITE_HTTP_PROXY_ENABLED`: (`true`/`false`) activa el fallback de proxy.
-- `VITE_HTTP_PROXY_URL`: endpoint del proxy para solicitudes externas.
-- `VITE_HTTP_RETRY_ON_403`: controla si se reintenta al recibir un 403 (por defecto `true`).
-- `VITE_HTTP_TIMEOUT`: timeout en ms para las solicitudes (por defecto `15000`).
+## 🚀 Descripción
+**Awareness** es una aplicación ligera desarrollada con **React + Vite**, pensada como una pieza de comunicación ejecutiva y visual.  
+Su propósito es mostrar, con claridad y datos, el valor comercial de las *Cápsulas ObservAuto* ante marcas, agencias y aliados.
 
-_Construido: 2025-10-08T23:16:35.655884_
+Este proyecto funciona como un micrositio tipo **elevator pitch digital**, optimizado para escritorio y móvil, desplegado mediante **Vercel**.
+
+---
+
+## 🧩 Estructura del Proyecto
+/src
+├── components/ # Navbar, Hero, Concept, Footer, etc.
+├── config/ # Configuración de navegación
+├── lib/ # Utilidades (incluye fetcher.js con manejo anti-403)
+├── styles/ # Tokens y estilos globales
+└── App.jsx # Punto de entrada principal
+vercel.json # Configuración de headers y redirect /stats
+
+yaml
+Copiar código
+
+---
+
+## ⚙️ Scripts de Ejecución
+Instalar dependencias:
+```bash
+npm install
+Entorno de desarrollo:
+
+bash
+Copiar código
+npm run dev
+Build de producción:
+
+bash
+Copiar código
+npm run build
+🌐 Deploy
+Producción: https://sales-capsulas.vercel.app
+
+Cada actualización en la rama main genera un deploy automático en Vercel.
+
+🧭 Estado Actual
+Código base limpio y funcional
+
+Sin Access Gate
+
+Headers de seguridad activos (vercel.json)
+
+Wrapper fetcher.js con manejo de errores 403 implementado
+
+Próximo paso: Healthcheck /dev/network
+
+👤 Autoría
+Desarrollado por ObservAuto
+Dirección creativa y técnica: Felipe Garan
+© ObservAuto 2025
+
+pgsql
+Copiar código
+
+---
+
+--- Archivo: vercel.json
+```json
+{
+  "version": 2,
+  "public": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/stats", "destination": "https://stats.observauto.com", "permanent": false }
+  ]
+}
