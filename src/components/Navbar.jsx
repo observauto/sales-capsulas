@@ -1,50 +1,37 @@
 import LogoOA from './LogoOA'
-import { navLinks } from '../config/navLinks'
+import MobileMenu from './MobileMenu'
 
-const iconSources = {
-  Premios: 'https://api.iconify.design/lucide:trophy.svg',
-  Ingreso: 'https://api.iconify.design/lucide:log-in.svg',
-  Favoritos: 'https://api.iconify.design/lucide:heart.svg',
-  Compartir: 'https://api.iconify.design/lucide:share-2.svg',
-  Switcher: 'https://api.iconify.design/lucide:sun-moon.svg'
-}
+export const links = [
+  { href: "#que-es", label: "Qué es" },
+  { href: "#proposito", label: "Propósito" },
+  { href: "#como-funciona", label: "Cómo funciona" },
+  { href: "#resultados", label: "Resultados" },
+  { href: "#demo-contacto", label: "Demo" },
+  { href: "/pauta", label: "Pauta" },
+]
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[color:var(--oa-border)] bg-white/80 backdrop-blur">
-      <div className="container flex items-center justify-between py-4">
-        <a href="#hero" className="flex items-center gap-2 text-[color:var(--oa-fg)]">
+    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-white/85 border-b border-oa-gray/30 shadow-sm">
+      <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="#hero" className="flex items-center gap-2">
           <LogoOA className="h-7 w-auto" />
-          <span className="sr-only">Observauto Awareness</span>
+          <span className="sr-only">Observauto</span>
         </a>
-        <ul className="flex items-center gap-2 sm:gap-4">
-          {navLinks.map(link => {
-            const icon = iconSources[link.label]
-            return (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="flex items-center gap-2 rounded-full px-3 py-2 text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-[color:var(--oa-muted)] transition-colors duration-200 hover:bg-[color:var(--oa-border)]/60 hover:text-[color:var(--oa-accent)] focus:outline-none focus:ring-2 focus:ring-[color:var(--oa-accent)]/40"
-                >
-                  {icon ? (
-                    <img
-                      src={icon}
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  ) : null}
-                  <span className="hidden sm:inline text-[0.7rem]">{link.label}</span>
-                  <span className="sm:hidden sr-only">{link.label}</span>
-                </a>
-              </li>
-            )
-          })}
+        <ul className="hidden md:flex items-center gap-6 text-oa-ink">
+          {links.map(l => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="hover:text-oa-red hover:bg-oa-gray/30 px-3 py-1.5 rounded-pill transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-oa-red"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
-      </div>
+        <MobileMenu />
+      </nav>
     </header>
   )
 }
