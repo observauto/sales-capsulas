@@ -37,9 +37,34 @@
     <meta property="og:image" content="/og-cover.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
+    <script>
+      (() => {
+        const storageKey = 'oa-theme'
+        const root = document.documentElement
+
+        const getStoredTheme = () => {
+          try {
+            const stored = window.localStorage.getItem(storageKey)
+            return stored === 'dark' || stored === 'light' ? stored : null
+          } catch (error) {
+            return null
+          }
+        }
+
+        const storedTheme = getStoredTheme()
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const theme = storedTheme ?? (prefersDark ? 'dark' : 'light')
+
+        if (theme === 'dark') {
+          root.classList.add('dark')
+        } else {
+          root.classList.remove('dark')
+        }
+      })()
+    </script>
   </head>
 
-  <body class="bg-white text-gray-900 antialiased">
+  <body class="bg-white text-gray-900 antialiased dark:bg-[#0B1220] dark:text-white">
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>

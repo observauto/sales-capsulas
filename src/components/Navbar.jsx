@@ -3,9 +3,9 @@ import navLinks from "../config/navLinks";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0B1220]/80 dark:text-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-        <a href="/" className="font-semibold tracking-tight">
+        <a href="/" className="font-semibold tracking-tight text-[#0B1220] dark:text-white">
           ObservAuto • Awareness
         </a>
         <nav className="flex items-center gap-2">
@@ -13,7 +13,7 @@ export default function Navbar() {
             <a
               key={link.path}
               href={link.path}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+              className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-[#0B1220] transition hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
             >
               <span className="hidden sm:inline">{link.label}</span>
               <span className="sm:hidden" aria-hidden="true">•</span>
@@ -22,7 +22,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-[#0B1220] transition hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
             aria-label="Favoritos"
             title="Favoritos"
           >
@@ -31,7 +31,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
+            className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-[#0B1220] transition hover:bg-gray-50 dark:text-white dark:hover:bg-white/10"
             aria-label="Compartir"
             title="Compartir"
             onClick={() => {
@@ -50,16 +50,6 @@ export default function Navbar() {
             }}
           >
             <span>🔗</span><span className="hidden sm:inline">Compartir</span>
-          </button>
-
-          <button
-            type="button"
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg hover:bg-gray-50"
-            aria-label="Cambiar tema"
-            title="Cambiar tema"
-            onClick={() => document.documentElement.classList.toggle("dark")}
-          >
-            <span>🌓</span><span className="hidden sm:inline">Tema</span>
           </button>
         </nav>
       </div>
