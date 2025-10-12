@@ -1,21 +1,99 @@
-import React from "react";
+import { useEffect, useState } from 'react'
+import { Twitter, Instagram, Youtube, Linkedin, Moon, Sun } from 'lucide-react'
+import { toggleTheme, THEME_CHANGE_EVENT } from '../utils/theme'
+
+const OALogo = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28" aria-hidden="true" className="h-6">
+    <g fontFamily="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" fontSize="20" fontWeight="800">
+      <text x="0" y="20" fill="#1C3B71">
+        OBSER
+      </text>
+      <text x="72" y="20" fill="#1F4086">
+        V
+      </text>
+      <text x="86" y="20" fill="#D70102">
+        AUTO
+      </text>
+    </g>
+  </svg>
+)
+
+const getInitialThemeState = () => {
+  if (typeof document === 'undefined') return false
+  return document.documentElement.classList.contains('dark')
+}
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
+  const socials = [
+    { icon: <Twitter className="h-5 w-5" aria-hidden="true" />, href: 'https://x.com/ObservAuto' },
+    { icon: <Instagram className="h-5 w-5" aria-hidden="true" />, href: 'https://instagram.com/observauto' },
+    { icon: <Youtube className="h-5 w-5" aria-hidden="true" />, href: 'https://youtube.com/@observauto' },
+    { icon: <Linkedin className="h-5 w-5" aria-hidden="true" />, href: 'https://linkedin.com/company/observauto' },
+  ]
+
+  const [isDark, setIsDark] = useState(getInitialThemeState)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const syncFromEvent = (event) => {
+      const theme = event?.detail?.theme
+      if (theme === 'dark' || theme === 'light') {
+        setIsDark(theme === 'dark')
+      } else if (typeof document !== 'undefined') {
+        setIsDark(document.documentElement.classList.contains('dark'))
+      }
+    }
+
+    window.addEventListener(THEME_CHANGE_EVENT, syncFromEvent)
+    return () => {
+      window.removeEventListener(THEME_CHANGE_EVENT, syncFromEvent)
+    }
+  }, [])
+
+  const handleToggleClick = (event) => {
+    const next = toggleTheme(event.currentTarget)
+    setIsDark(next === 'dark')
+  }
+
   return (
-    <footer className="mt-24 border-t border-gray-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-4">
-            <p className="text-sm text-gray-600">
-              Awareness: elevator pitch digital respaldado por datos para vender espacios comerciales de Cápsulas ObservAuto.
-            </p>
+    <footer className="mt-24 border-t border-gray-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0B1220]/90">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <OALogo />
+            <span className="text-sm text-gray-600 dark:text-white/70">© {year} ObservAuto</span>
           </div>
-        </div>
-        <div className="mt-8 text-center text-sm text-gray-500">
-          © {year} ObservAuto
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              aria-pressed={isDark}
+              title="Cambiar tema"
+              onClick={handleToggleClick}
+              className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
+            >
+              <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
+              <Sun className="h-5 w-5 hidden dark:block" aria-hidden="true" />
+            </button>
+
+            <nav aria-label="Social media" className="flex items-center gap-3">
+              {socials.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
