@@ -1,24 +1,22 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Concept from "./components/Concept";
-import ResultsDashboard from "./components/ResultsDashboard";
-import Philosophy from "./components/Philosophy";
-import CTA from "./components/CTA";
+import HeroAwareness from "./components/HeroAwareness";
+import ConceptSection from "./components/ConceptSection";
+import DashboardPreview from "./components/DashboardPreview";
+import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import DevNetworkPanel from "./components/DevNetworkPanel";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-[#0B1220] dark:bg-[#0B1220] dark:text-white">
       <Navbar />
       <main>
-        <Hero />
-        <Concept />
-        <ResultsDashboard />
-        <Philosophy />
-        <CTA />
+        <HeroAwareness />
+        <ConceptSection />
+        <DashboardPreview />
+        <CTASection />
       </main>
       <Footer />
       <FloatingWhatsApp />
