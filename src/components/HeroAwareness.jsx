@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from 'lucide-react'
 
 export default function HeroAwareness() {
   return (
@@ -16,9 +16,9 @@ export default function HeroAwareness() {
             Lleva tu marca a la mente correcta, en el momento correcto.
           </h1>
           <p className="mt-4 text-lg text-white/90">
-            Cápsulas de conocimiento activables por equipos comerciales y audiencias reales. Contenido enfocado, medición clara y una UX hecha para convertir curiosidad en intención.
+            Cápsulas de conocimiento activables por equipos comerciales y audiencias reales. Contenido enfocado,
+            medición clara y una UX hecha para convertir curiosidad en intención.
           </p>
-
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#cta"
@@ -35,7 +35,6 @@ export default function HeroAwareness() {
               Cómo funciona
             </a>
           </div>
-
           <ul className="mt-10 grid gap-3 text-sm text-white/80 sm:grid-cols-3">
             <li className="rounded-lg border border-white/10 bg-white/5 p-3">⚡ Carga veloz (Vite + Node 20)</li>
             <li className="rounded-lg border border-white/10 bg-white/5 p-3">🎯 Contenido accionable</li>
@@ -44,5 +43,5 @@ export default function HeroAwareness() {
         </div>
       </div>
     </section>
-  );
+  )
 }

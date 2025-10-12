@@ -1,24 +1,30 @@
-import { Twitter, Instagram, Youtube, Linkedin, Moon, Sun } from "lucide-react";
-import { toggleTheme } from "../utils/theme";
+import { Twitter, Instagram, Youtube, Linkedin, Moon, Sun } from 'lucide-react'
+import { toggleTheme } from '../utils/theme'
 
 const OALogo = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28" aria-hidden="true" className="h-6">
     <g fontFamily="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" fontSize="20" fontWeight="800">
-      <text x="0" y="20" fill="#1C3B71">OBSER</text>
-      <text x="72" y="20" fill="#1F4086">V</text>
-      <text x="86" y="20" fill="#D70102">AUTO</text>
+      <text x="0" y="20" fill="#1C3B71">
+        OBSER
+      </text>
+      <text x="72" y="20" fill="#1F4086">
+        V
+      </text>
+      <text x="86" y="20" fill="#D70102">
+        AUTO
+      </text>
     </g>
   </svg>
-);
+)
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
   const socials = [
-    { icon: <Twitter className="h-5 w-5" aria-hidden="true" />, href: "https://x.com/ObservAuto" },
-    { icon: <Instagram className="h-5 w-5" aria-hidden="true" />, href: "https://instagram.com/observauto" },
-    { icon: <Youtube className="h-5 w-5" aria-hidden="true" />, href: "https://youtube.com/@observauto" },
-    { icon: <Linkedin className="h-5 w-5" aria-hidden="true" />, href: "https://linkedin.com/company/observauto" },
-  ];
+    { icon: <Twitter className="h-5 w-5" aria-hidden="true" />, href: 'https://x.com/ObservAuto' },
+    { icon: <Instagram className="h-5 w-5" aria-hidden="true" />, href: 'https://instagram.com/observauto' },
+    { icon: <Youtube className="h-5 w-5" aria-hidden="true" />, href: 'https://youtube.com/@observauto' },
+    { icon: <Linkedin className="h-5 w-5" aria-hidden="true" />, href: 'https://linkedin.com/company/observauto' },
+  ]
 
   return (
     <footer className="mt-24 border-t border-gray-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0B1220]/90">
@@ -58,5 +64,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
