@@ -1,11 +1,5 @@
-import { useEffect, useState } from "react";
 import { Twitter, Instagram, Youtube, Linkedin, Moon, Sun } from "lucide-react";
-import { toggleTheme, THEME_CHANGE_EVENT } from "../utils/theme";
-
-const getThemeState = () => {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.classList.contains("dark");
-};
+import { toggleTheme } from "../utils/theme";
 
 const OALogo = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28" aria-hidden="true" className="h-6">
@@ -18,31 +12,6 @@ const OALogo = () => (
 );
 
 export default function Footer() {
-  const [isDark, setIsDark] = useState(getThemeState);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return undefined;
-
-    const syncTheme = (event) => {
-      const theme = event?.detail?.theme;
-      if (theme === "dark" || theme === "light") {
-        setIsDark(theme === "dark");
-      } else {
-        setIsDark(getThemeState());
-      }
-    };
-
-    window.addEventListener(THEME_CHANGE_EVENT, syncTheme);
-    return () => {
-      window.removeEventListener(THEME_CHANGE_EVENT, syncTheme);
-    };
-  }, []);
-
-  const handleThemeToggle = (event) => {
-    const next = toggleTheme(event.currentTarget);
-    setIsDark(next === "dark");
-  };
-
   const year = new Date().getFullYear();
   const socials = [
     { icon: <Twitter className="h-5 w-5" aria-hidden="true" />, href: "https://x.com/ObservAuto" },
@@ -63,9 +32,9 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              aria-pressed={isDark}
+              aria-pressed="false"
               title="Cambiar tema"
-              onClick={handleThemeToggle}
+              onClick={() => toggleTheme()}
               className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
             >
               <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
