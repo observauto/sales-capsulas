@@ -3,6 +3,10 @@ export function startOATracking() {
   if (window.__oaTrackingStarted) return
   window.__oaTrackingStarted = true
 
+  if (window.__oaDebug) {
+    console.info('[OA] tracking ready')
+  }
+
   const handler = (ev) => {
     try {
       const path = ev.composedPath ? ev.composedPath() : []
@@ -22,12 +26,17 @@ export function startOATracking() {
         userAgent: navigator.userAgent,
       }
 
-      if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      const hasDataLayer = window.dataLayer && Array.isArray(window.dataLayer)
+      const trackUrl = import.meta.env?.VITE_TRACK_URL
+
+      if (hasDataLayer) {
         window.dataLayer.push({ event: 'oa', ...payload })
-      } else if (import.meta.env.VITE_TRACK_URL) {
+      } else if (trackUrl) {
         const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' })
-        navigator.sendBeacon(import.meta.env.VITE_TRACK_URL, blob)
-      } else {
+        navigator.sendBeacon(trackUrl, blob)
+      }
+
+      if (!hasDataLayer && !trackUrl) {
         console.info('[OA]', payload)
       }
     } catch (e) {

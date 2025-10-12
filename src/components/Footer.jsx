@@ -26,6 +26,8 @@ export default function Footer() {
     { icon: <Linkedin className="h-5 w-5" aria-hidden="true" />, href: 'https://linkedin.com/company/observauto' },
   ]
 
+  const isDark = typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+
   return (
     <footer className="mt-24 border-t border-gray-200 bg-white/90 backdrop-blur dark:border-white/10 dark:bg-[#0B1220]/90">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
@@ -38,9 +40,9 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              aria-pressed="false"
+              aria-pressed={isDark}
               title="Cambiar tema"
-              onClick={() => toggleTheme()}
+              onClick={(event) => toggleTheme(event.currentTarget)}
               className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
             >
               <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
