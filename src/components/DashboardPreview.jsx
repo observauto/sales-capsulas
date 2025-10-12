@@ -5,7 +5,7 @@ function Stat({ label, value, hint }) {
       <div className="mt-2 text-3xl font-extrabold text-[#1C3B71] dark:text-white">{value}</div>
       {hint && <div className="mt-1 text-xs text-gray-500 dark:text-white/60">{hint}</div>}
     </div>
-  )
+  );
 }
 
 function Card({ title, children, footer }) {
@@ -13,11 +13,9 @@ function Card({ title, children, footer }) {
     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[#0E1526]">
       <h3 className="text-lg font-bold text-[#1F4086] dark:text-white">{title}</h3>
       <div className="mt-4">{children}</div>
-      {footer && (
-        <div className="mt-4 border-t pt-3 text-sm text-gray-600 dark:text-white/60 dark:border-white/10">{footer}</div>
-      )}
+      {footer && <div className="mt-4 border-t pt-3 text-sm text-gray-600 dark:text-white/60 dark:border-white/10">{footer}</div>}
     </div>
-  )
+  );
 }
 
 export default function DashboardPreview() {
@@ -42,9 +40,9 @@ export default function DashboardPreview() {
           >
             <ul className="divide-y dark:divide-white/10">
               {[
-                { name: 'EV Essentials', score: '↑ alto interés' },
-                { name: 'Financiación en 3 pasos', score: '↑ conversión' },
-                { name: 'Garantía & posventa', score: '↑ retención' },
+                { name: "EV Essentials", score: "↑ alto interés" },
+                { name: "Financiación en 3 pasos", score: "↑ conversión" },
+                { name: "Garantía & posventa", score: "↑ retención" },
               ].map((i) => (
                 <li key={i.name} className="py-2 flex items-center justify-between">
                   <span className="font-medium text-[#0B1220] dark:text-white">{i.name}</span>
@@ -68,5 +66,5 @@ export default function DashboardPreview() {
         </div>
       </div>
     </section>
-  )
+  );
 }
