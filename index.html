@@ -10,6 +10,85 @@
     />
     <meta name="theme-color" content="#1C3B71" />
 
+    <script>
+      (function () {
+        try {
+          var STORAGE_KEY = 'oa-theme'
+          var root = document.documentElement
+
+          function apply(theme, options) {
+            var opts = options || {}
+            var persist = opts.persist !== false
+            var emit = opts.emit !== false
+            var t = theme === 'dark' ? 'dark' : 'light'
+
+            root.classList.toggle('dark', t === 'dark')
+            root.setAttribute('data-theme', t)
+
+            if (persist) {
+              try {
+                localStorage.setItem(STORAGE_KEY, t)
+              } catch (e) {}
+            }
+
+            if (emit) {
+              try {
+                window.dispatchEvent(
+                  new CustomEvent('oa:theme-change', { detail: { theme: t } })
+                )
+              } catch (e) {}
+            }
+
+            if (opts.button && opts.button.setAttribute) {
+              opts.button.setAttribute('aria-pressed', String(t === 'dark'))
+            }
+
+            return t
+          }
+
+          function get() {
+            var stored = null
+            try {
+              stored = localStorage.getItem(STORAGE_KEY)
+            } catch (e) {}
+            if (stored === 'dark' || stored === 'light') return stored
+            var prefersDark =
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches
+            return prefersDark ? 'dark' : 'light'
+          }
+
+          var initial = get()
+          apply(initial, { persist: false, emit: false })
+
+          window.oaTheme = {
+            get: function () {
+              return root.classList.contains('dark') ? 'dark' : 'light'
+            },
+            set: function (theme, options) {
+              return apply(theme, options)
+            },
+            toggle: function (options) {
+              return apply(
+                this.get() === 'dark' ? 'light' : 'dark',
+                Object.assign({ persist: true, emit: true }, options)
+              )
+            },
+            subscribe: function (fn) {
+              if (typeof fn !== 'function') return function () {}
+              var handler = function (e) {
+                fn(e.detail.theme)
+              }
+              window.addEventListener('oa:theme-change', handler)
+              return function () {
+                window.removeEventListener('oa:theme-change', handler)
+              }
+            },
+          }
+        } catch (e) {}
+      })()
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -39,7 +118,7 @@
     <meta property="og:locale" content="es_CO" />
   </head>
 
-  <body class="bg-white text-gray-900 antialiased">
+  <body class="bg-white text-gray-900 antialiased dark:bg-[#0B1220] dark:text-white">
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>
