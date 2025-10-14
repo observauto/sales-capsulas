@@ -37,6 +37,49 @@
     <meta property="og:image" content="/og-cover.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
+<script>
+  (function () {
+    try {
+      var STORAGE_KEY = 'oa-theme';
+      var root = document.documentElement;
+
+      function apply(theme, persist) {
+        var t = (theme === 'dark') ? 'dark' : 'light';
+        root.classList.toggle('dark', t === 'dark');
+        root.setAttribute('data-theme', t);
+        if (persist) {
+          try { localStorage.setItem(STORAGE_KEY, t); } catch(e) {}
+        }
+        try {
+          window.dispatchEvent(new CustomEvent('oa:theme-change', { detail: { theme: t } }));
+        } catch(e) {}
+        return t;
+      }
+
+      function get() {
+        var stored = null;
+        try { stored = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+        if (stored === 'dark' || stored === 'light') return stored;
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return prefersDark ? 'dark' : 'light';
+      }
+
+      // Inicializa antes del primer paint
+      var initial = get();
+      apply(initial, false);
+
+      // API global para React / depuración
+      window.oaTheme = {
+        get: function(){ return root.classList.contains('dark') ? 'dark' : 'light'; },
+        set: function(theme){ return apply(theme, true); },
+        toggle: function(){ return apply(this.get()==='dark' ? 'light' : 'dark', true); },
+        subscribe: function(fn){ window.addEventListener('oa:theme-change', function(e){ fn && fn(e.detail.theme); }); }
+      };
+    } catch (e) {}
+  })();
+</script>
+
+    
     <script>
   try {
     var stored = localStorage.getItem('oa-theme');
