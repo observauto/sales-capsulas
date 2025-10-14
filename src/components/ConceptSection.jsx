@@ -3,9 +3,7 @@ export default function ConceptSection() {
     <section id="concept" className="bg-white dark:bg-[#0B1220]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-extrabold text-[#1C3B71] dark:text-white">
-            ¿Qué es una Cápsula ObservAuto?
-          </h2>
+          <h2 className="text-3xl font-extrabold text-[#1C3B71] dark:text-white">¿Qué es una Cápsula ObservAuto?</h2>
           <p className="mt-4 text-lg text-[#0B1220] dark:text-white/80">
             Un módulo de conocimiento, estático y optimizado para móviles, que resuelve una duda concreta del usuario
             en menos de 90 segundos. Información verificada y accionable para ayudar a vender mejor y más rápido.
