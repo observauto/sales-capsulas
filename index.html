@@ -1,100 +1,60 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ObservAuto Awareness</title>
-    <meta
-      name="description"
-      content="Elevator pitch digital respaldado por datos: Awareness by ObservAuto. La vitrina comercial para Cápsulas ObservAuto."
-    />
-    <meta name="theme-color" content="#1C3B71" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ObservAuto · Awareness</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Manifest -->
+    <!-- Manifest para evitar 401 y permitir PWA mínimo -->
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- SEO / Social -->
-    <meta property="og:title" content="ObservAuto Awareness" />
-    <meta
-      property="og:description"
-      content="Elevator pitch digital respaldado por datos: Awareness by ObservAuto."
-    />
-    <meta property="og:image" content="/og-cover.jpg" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_CO" />
-<script>
-  (function () {
-    try {
-      var STORAGE_KEY = 'oa-theme';
-      var root = document.documentElement;
-
-      function apply(theme, persist) {
-        var t = (theme === 'dark') ? 'dark' : 'light';
-        root.classList.toggle('dark', t === 'dark');
-        root.setAttribute('data-theme', t);
-        if (persist) {
-          try { localStorage.setItem(STORAGE_KEY, t); } catch(e) {}
-        }
-        try {
-          window.dispatchEvent(new CustomEvent('oa:theme-change', { detail: { theme: t } }));
-        } catch(e) {}
-        return t;
-      }
-
-      function get() {
-        var stored = null;
-        try { stored = localStorage.getItem(STORAGE_KEY); } catch(e) {}
-        if (stored === 'dark' || stored === 'light') return stored;
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
-      }
-
-      // Inicializa antes del primer paint
-      var initial = get();
-      apply(initial, false);
-
-      // API global para React / depuración
-      window.oaTheme = {
-        get: function(){ return root.classList.contains('dark') ? 'dark' : 'light'; },
-        set: function(theme){ return apply(theme, true); },
-        toggle: function(){ return apply(this.get()==='dark' ? 'light' : 'dark', true); },
-        subscribe: function(fn){ window.addEventListener('oa:theme-change', function(e){ fn && fn(e.detail.theme); }); }
-      };
-    } catch (e) {}
-  })();
-</script>
-
-    
+    <!-- Bootstrap de tema + API global oaTheme (antes del primer paint) -->
     <script>
-  try {
-    var stored = localStorage.getItem('oa-theme');
-    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = stored || (prefersDark ? 'dark' : 'light');
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {}
-</script>
+      (function () {
+        try {
+          var STORAGE_KEY = 'oa-theme';
+          var root = document.documentElement;
 
+          function apply(theme, persist) {
+            var t = (theme === 'dark') ? 'dark' : 'light';
+            root.classList.toggle('dark', t === 'dark');
+            root.setAttribute('data-theme', t);
+            if (persist) {
+              try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
+            }
+            try {
+              window.dispatchEvent(new CustomEvent('oa:theme-change', { detail: { theme: t } }));
+            } catch (e) {}
+            return t;
+          }
+
+          function get() {
+            var stored = null;
+            try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+            if (stored === 'dark' || stored === 'light') return stored;
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            return prefersDark ? 'dark' : 'light';
+          }
+
+          // Inicializa ANTES del primer paint
+          var initial = get();
+          apply(initial, false);
+
+          // API global para React/depuración
+          window.oaTheme = {
+            get: function () { return root.classList.contains('dark') ? 'dark' : 'light'; },
+            set: function (theme) { return apply(theme, true); },
+            toggle: function () { return apply(this.get() === 'dark' ? 'light' : 'dark', true); },
+            subscribe: function (fn) { window.addEventListener('oa:theme-change', function (e) { fn && fn(e.detail.theme); }); }
+          };
+        } catch (e) { /* no-op */ }
+      })();
+    </script>
   </head>
 
-  <body class="bg-white text-gray-900 antialiased">
+  <body class="h-full">
     <div id="root"></div>
-
+    <!-- Vite entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
