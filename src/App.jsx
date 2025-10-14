@@ -9,9 +9,9 @@ import DevNetworkPanel from "./components/DevNetworkPanel";
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-[#0B1220] antialiased dark:bg-[#0B1220] dark:text-white">
+    <div className="min-h-screen bg-white text-[#0B1220] antialiased dark:bg-[#0B1220] dark:text-white">
       <Navbar />
-      <main className="flex-1">
+      <main>
         <HeroAwareness />
         <ConceptSection />
         <DashboardPreview />
@@ -19,7 +19,6 @@ export default function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
-      {/* El panel solo se renderiza en desarrollo; en producción retorna null */}
       <DevNetworkPanel />
     </div>
   );

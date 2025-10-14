@@ -16,8 +16,8 @@ export default function HeroAwareness() {
             Lleva tu marca a la mente correcta, en el momento correcto.
           </h1>
           <p className="mt-4 text-lg text-white/90">
-            Cápsulas de conocimiento activables por equipos comerciales y audiencias reales. Contenido enfocado,
-            medición clara y una UX hecha para convertir curiosidad en intención.
+            Cápsulas de conocimiento activables por equipos comerciales y audiencias reales.
+            Contenido enfocado, medición clara y una UX hecha para convertir curiosidad en intención.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
