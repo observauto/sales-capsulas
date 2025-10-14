@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import HeroAwareness from "./components/HeroAwareness";
 import ConceptSection from "./components/ConceptSection";
@@ -10,9 +9,9 @@ import DevNetworkPanel from "./components/DevNetworkPanel";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-[#0B1220] dark:bg-[#0B1220] dark:text-white">
+    <div className="flex min-h-screen flex-col bg-white text-[#0B1220] antialiased dark:bg-[#0B1220] dark:text-white">
       <Navbar />
-      <main>
+      <main className="flex-1">
         <HeroAwareness />
         <ConceptSection />
         <DashboardPreview />
