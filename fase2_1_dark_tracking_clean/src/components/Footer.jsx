@@ -1,3 +1,5 @@
+// src/components/Footer.jsx
+import React, { useEffect, useState } from "react";
 import { Twitter, Instagram, Youtube, Linkedin, Moon, Sun } from "lucide-react";
 import { toggleTheme } from "../utils/theme";
 
@@ -13,6 +15,15 @@ const OALogo = () => (
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [pressed, setPressed] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setPressed(document.documentElement.classList.contains("dark"));
+    sync();
+    window.addEventListener("oa:theme-change", sync);
+    return () => window.removeEventListener("oa:theme-change", sync);
+  }, []);
+
   const socials = [
     { icon: <Twitter className="h-5 w-5" aria-hidden="true" />, href: "https://x.com/ObservAuto" },
     { icon: <Instagram className="h-5 w-5" aria-hidden="true" />, href: "https://instagram.com/observauto" },
@@ -28,20 +39,28 @@ export default function Footer() {
             <OALogo />
             <span className="text-sm text-gray-600 dark:text-white/70">© {year} ObservAuto</span>
           </div>
+
           <div className="flex items-center gap-3">
             <button
               type="button"
-              aria-pressed="false"
+              aria-pressed={pressed}
               title="Cambiar tema"
-              onClick={() => toggleTheme()}
+              onClick={(e) => toggleTheme(e.currentTarget)}
               className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
             >
               <Moon className="h-5 w-5 dark:hidden" aria-hidden="true" />
               <Sun className="h-5 w-5 hidden dark:block" aria-hidden="true" />
             </button>
+
             <nav aria-label="Social media" className="flex items-center gap-3">
               {socials.map((s, i) => (
-                <a key={i} href={s.href} target="_blank" rel="noreferrer" className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5">
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-gray-200 p-2 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1F4086] focus:ring-offset-2 dark:border-white/10 dark:hover:bg-white/5"
+                >
                   {s.icon}
                 </a>
               ))}
