@@ -5,7 +5,9 @@ export default function CTASection() {
         <div className="rounded-3xl border border-gray-200 bg-gradient-to-br from-white to-[#F3F4F6] p-8 md:p-12 dark:border-white/10 dark:from-[#0E1526] dark:to-[#0B1220]">
           <div className="grid gap-8 md:grid-cols-3 items-center">
             <div className="md:col-span-2">
-              <h2 className="text-3xl font-extrabold text-[#1C3B71] dark:text-white">¿Listo para ver tus cápsulas en acción?</h2>
+              <h2 className="text-3xl font-extrabold text-[#1C3B71] dark:text-white">
+                ¿Listo para ver tus cápsulas en acción?
+              </h2>
               <p className="mt-2 text-[#0B1220]/80 dark:text-white/70">
                 Adaptamos el formato a tus objetivos y medimos el impacto desde el día uno.
               </p>
